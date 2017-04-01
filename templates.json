@@ -1,0 +1,239 @@
+[
+  {
+    "title": "Cardigann",
+    "description": "Torznab/Torrentpotato proxy",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cardigan.png",
+    "image": "linuxserver/cardigann:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      }
+    ],
+    "ports": [
+      "5060/tcp"
+    ],
+    "volumes": [
+      "/var/lib/cardicann", "/config"
+    ]
+  },
+  {
+    "title": "CouchPotato",
+    "description": "Movie Manager",
+    "logo": "https://couchpota.to/media/images/full.png",
+    "image": "linuxserver/couchpotato:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      }
+    ],
+    "ports": [
+      "5050/tcp"
+    ],
+    "volumes": [
+      "/var/lib/couchpotato", "/config",
+      "/storage/media/Downloads/Media/complete/movies", "/downloads",
+      "/storage/media/Movies", "/movies"
+    ]
+  },
+  {
+    "title": "Headphones",
+    "description": "Audio Manager",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones-banner.png",
+    "image": "linuxserver/headphones:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      }
+    ],
+    "ports": [
+      "8181/tcp"
+    ],
+    "volumes": [
+      "/var/lib/headphones", "/config",
+      "/storage/media/Downloads/Media/complete/music", "/downloads",
+      "/storage/media/Music", "/music"
+    ]
+  },
+  {
+    "title": "Muximux",
+    "description": "HTPC Management Interface",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/muximux-icon.png",
+    "image": "linuxserver/muximux:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      }
+    ],
+    "ports": [
+      "80/tcp"
+    ],
+    "volumes": [
+      "/var/lib/muximux", "/config"
+    ]
+  },
+  {
+    "title": "NZBHydra",
+    "description": "Newznab Proxy",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hydra-icon.png",
+    "image": "linuxserver/hydra:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      }
+    ],
+    "ports": [
+      "5075/tcp"
+    ],
+    "volumes": [
+      "/var/lib/nzbhydra", "/config",
+      "/storage/media/Downloads/Media/complete", "/downloads"
+    ]
+  },
+  {
+    "title": "SABnzbd",
+    "description": "Newznab Downloader",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sabnzbd-banner.png",
+    "image": "linuxserver/sabnzbd:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      }
+    ],
+    "ports": [
+      "8080/tcp",
+      "9090/tcp"
+    ],
+    "volumes": [
+      "/var/lib/sabnzbd", "/config",
+      "/storage/media/Downloads/Media/complete", "/downloads",
+      "/storage/media/Downloads/Media/incomplete-sabnzbd", "/incomplete-downloads"
+    ]
+  },
+  {
+    "title": "Sonarr",
+    "description": "TV Series Manager",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-banner.png",
+    "image": "linuxserver/sonarr:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      }
+    ],
+    "ports": [
+      "8989/tcp"
+    ],
+    "volumes": [
+      "/dev/rtc", "/dev/rtc", "ro",
+      "/var/lib/sonarr", "/config",
+      "/storage/media/Downloads/Media/complete", "/downloads",
+      "/storage/media/TV", "/tv"
+    ]
+  },
+  {
+    "title": "Transmission",
+    "description": "Torrent Downloader",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png",
+    "image": "linuxserver/transmission:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      }
+    ],
+    "ports": [
+      "9091/tcp",
+      "51413/tcp",
+      "51413/udp"
+    ],
+    "volumes": [
+      "/var/lib/transmission", "/config",
+      "/storage/media/Downloads/Media/complete", "/downloads",
+      "/storage/media/Downloads/Media/blackhole", "/watch"
+    ]
+  }
+]
