@@ -145,7 +145,7 @@
     ]
   },
   {
-    "title": "OpenVPN Access Server",
+    "title": "OpenVPN-AS",
     "description": "VPN Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openvpn-as-banner.png",
     "image": "linuxserver/openvpn-as:latest",
