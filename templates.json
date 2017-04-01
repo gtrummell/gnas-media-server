@@ -20,7 +20,7 @@
       "5060/tcp"
     ],
     "volumes": [
-      "/var/lib/cardicann", "/config"
+      "/config"
     ]
   },
   {
@@ -49,9 +49,9 @@
       "5050/tcp"
     ],
     "volumes": [
-      "/var/lib/couchpotato", "/config",
-      "/storage/media/Downloads/Media/complete/movies", "/downloads",
-      "/storage/media/Movies", "/movies"
+      "/config",
+      "/downloads",
+      "/movies"
     ]
   },
   {
@@ -80,9 +80,9 @@
       "8181/tcp"
     ],
     "volumes": [
-      "/var/lib/headphones", "/config",
-      "/storage/media/Downloads/Media/complete/music", "/downloads",
-      "/storage/media/Music", "/music"
+      "/config",
+      "/downloads",
+      "/music"
     ]
   },
   {
@@ -111,7 +111,7 @@
       "80/tcp"
     ],
     "volumes": [
-      "/var/lib/muximux", "/config"
+      "/config"
     ]
   },
   {
@@ -140,8 +140,8 @@
       "5075/tcp"
     ],
     "volumes": [
-      "/var/lib/nzbhydra", "/config",
-      "/storage/media/Downloads/Media/complete", "/downloads"
+      "/config",
+      "/downloads"
     ]
   },
   {
@@ -171,9 +171,9 @@
       "9090/tcp"
     ],
     "volumes": [
-      "/var/lib/sabnzbd", "/config",
-      "/storage/media/Downloads/Media/complete", "/downloads",
-      "/storage/media/Downloads/Media/incomplete-sabnzbd", "/incomplete-downloads"
+      "/config",
+      "/downloads",
+      "/incomplete-downloads"
     ]
   },
   {
@@ -197,10 +197,10 @@
       "8989/tcp"
     ],
     "volumes": [
-      "/dev/rtc", "/dev/rtc", "ro",
-      "/var/lib/sonarr", "/config",
-      "/storage/media/Downloads/Media/complete", "/downloads",
-      "/storage/media/TV", "/tv"
+      "/dev/rtc:ro",
+      "/config",
+      "/downloads",
+      "/tv"
     ]
   },
   {
@@ -231,9 +231,9 @@
       "51413/udp"
     ],
     "volumes": [
-      "/var/lib/transmission", "/config",
-      "/storage/media/Downloads/Media/complete", "/downloads",
-      "/storage/media/Downloads/Media/blackhole", "/watch"
+      "/config",
+      "/downloads",
+      "/watch"
     ]
   }
 ]
