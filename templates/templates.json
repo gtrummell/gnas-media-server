@@ -145,6 +145,39 @@
     ]
   },
   {
+    "title": "OpenVPN Access Server",
+    "description": "VPN Server",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openvpn-as-banner.png",
+    "image": "linuxserver/openvpn-as:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      },
+      {
+        "name": "INTERFACE",
+        "label": "Interface",
+        "set": "eth0"
+      }
+    ],
+    "network": "host",
+    "privileged": "true",
+    "volumes": [
+      "/config"
+    ]
+  },
+  {
     "title": "SABnzbd",
     "description": "Newznab Downloader",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sabnzbd-banner.png",

@@ -12,6 +12,7 @@ This repository hosts HTPC application template definitions for portainer.
 * [Headphones](https://hub.docker.com/r/linuxserver/headphones) Audio Manager by [LinuxServer.io](https://linuxserver.io)
 * [Muximux](https://hub.docker.com/r/linuxserver/muximux) HTPC Management Interface by [LinuxServer.io](https://linuxserver.io)
 * [NZBHydra](https://hub.docker.com/r/linuxserver/hydra) Newznab Proxy by [LinuxServer.io](https://linuxserver.io)
+* [OpenVPN Access Server](https://hub.docker.com/r/linuxserver/openvpn-as) VPN Server by [LinuxServer.io](https://linuxserver.io)
 * [SABnzbd](https://hub.docker.com/r/linuxserver/sabnzbd) Newznab Downloader by [LinuxServer.io](https://linuxserver.io)
 * [Sonarr](https://hub.docker.com/r/linuxserver/sonarr) TV Series Manager by [LinuxServer.io](https://linuxserver.io)
 * [Transmission](https://hub.docker.com/r/linuxserver/transmission) Torrent Downloader by [LinuxServer.io](https://linuxserver.io)
