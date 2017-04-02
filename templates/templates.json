@@ -137,7 +137,7 @@
       },
       {
         "name": "BRAINZCODE",
-        "label": "Timezone",
+        "label": "MusicBrainz API Key",
         "set": ""
       }
     ],
