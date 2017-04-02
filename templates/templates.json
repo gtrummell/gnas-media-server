@@ -115,6 +115,41 @@
     ]
   },
   {
+    "title": "MusicBrainz",
+    "description": "Music Manager",
+    "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/musicbrainzgitlogo.jpg",
+    "image": "linuxserver/musicbrainz:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      },
+      {
+        "name": "BRAINZCODE",
+        "label": "Timezone",
+        "set": "America/Los Angeles"
+      }
+    ],
+    "ports": [
+      "5000/tcp"
+    ],
+    "volumes": [
+      "/config",
+      "/data"
+    ]
+  },
+  {
     "title": "NZBHydra",
     "description": "Newznab Proxy",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hydra-icon.png",
