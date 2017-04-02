@@ -241,7 +241,8 @@
     "volumes": [
       "/config",
       "/downloads",
-      "/incomplete-downloads"
+      "/incomplete-downloads",
+      "/watch"
     ]
   },
   {
@@ -300,7 +301,8 @@
     ],
     "volumes": [
       "/config",
-      "/downloads",
+      "/downloads/complete",
+      "/downloads/incomplete",
       "/watch"
     ]
   }
