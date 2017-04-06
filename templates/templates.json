@@ -1513,7 +1513,7 @@
   {
     "title": "SABnzbd",
     "description": "Newznab Binary Downloader",
-    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sabnzbd-banner.png",
+    "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/02/sab2_512.png",
     "image": "linuxserver/sabnzbd:latest",
     "env": [
       {
