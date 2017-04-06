@@ -754,7 +754,7 @@
   {
     "title": "Medusa",
     "description": "TV Series Manager",
-    "logo": "https://github.com/pymedusa/Medusa/blob/master/static/images/poster.png",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/medusa-readme.png",
     "image": "linuxserver/medusa:latest",
     "env": [
       {
