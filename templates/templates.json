@@ -1545,7 +1545,7 @@
   {
     "title": "Sickbeard",
     "description": "TV Series Manager",
-    "logo": "http://wolfeden.ca/sickbeard_small.png",
+    "logo": "https://pbs.twimg.com/profile_images/1288187778/head_400x400.png",
     "image": "linuxserver/sickbeard:latest",
     "env": [
       {
@@ -1637,7 +1637,7 @@
   {
     "title": "Sonarr",
     "description": "TV Series Manager",
-    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-banner.png",
+    "logo": "https://www.freebsdnews.com/wp-content/uploads/sonarr.png",
     "image": "linuxserver/sonarr:latest",
     "env": [
       {
@@ -1664,7 +1664,7 @@
   {
     "title": "Syncthing",
     "description": "Personal Cloud File Synchronization Tool",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/83/SyncthingAugustLogo.png",
+    "logo": "https://www.unixmen.com/wp-content/uploads/2015/01/Syncthing.png",
     "image": "linuxserver/syncthing:latest",
     "env": [
       {
@@ -1751,7 +1751,7 @@
   {
     "title": "Transmission",
     "description": "Torrent Downloader",
-    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png",
+    "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/04/transmission.png",
     "image": "linuxserver/transmission:latest",
     "env": [
       {
