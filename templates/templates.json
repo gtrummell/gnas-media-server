@@ -1323,7 +1323,7 @@
   {
     "title": "Plexrequests",
     "description": "Multi-user Plex Media Requests Manager",
-    "logo": "https://url-to-logo.com",
+    "logo": "https://us.v-cdn.net/6025034/uploads/ipb/profile/nphoto-135886.png",
     "image": "linuxserver/plexrequests:latest",
     "env": [
       {
@@ -1449,7 +1449,7 @@
   {
     "title": "Resilio-Sync",
     "description": "Bittorrent-based File Synchronization Server",
-    "logo": "https://url-to-logo.com",
+    "logo": "https://index.tnwcdn.com/images/d07f5726fcc0fbaa09e0afee611212256ca75e19.jpeg",
     "image": "linuxserver/resilio-sync:latest",
     "env": [
       {
