@@ -116,6 +116,7 @@
     "ports": [
       "5060/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/config"
     ]
@@ -200,6 +201,7 @@
     "ports": [
       "5050/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/config",
       "/downloads",
@@ -411,6 +413,7 @@
     "ports": [
       "8181/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/config",
       "/downloads",
@@ -875,6 +878,7 @@
     "ports": [
       "5000/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/config",
       "/data"
@@ -904,6 +908,7 @@
     "ports": [
       "80/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/config"
     ]
@@ -1086,6 +1091,7 @@
     "ports": [
       "5075/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/config",
       "/downloads"
@@ -1535,6 +1541,7 @@
       "8080/tcp",
       "9090/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/config",
       "/downloads",
@@ -1654,6 +1661,7 @@
     "ports": [
       "8989/tcp"
     ],
+    "network": "host",
     "volumes": [
       "/dev/rtc:ro",
       "/config",
@@ -1743,6 +1751,7 @@
         "label": "Timezone (i.e. 'America/Los Angeles')"
       }
     ],
+    "network": "host",
     "volumes": [
       "/config",
       "/etc/localtime:ro"
@@ -1774,6 +1783,7 @@
       "51413/tcp",
       "51413/udp"
     ],
+    "network": "host",
     "volumes": [
       "/config",
       "/downloads/complete",
