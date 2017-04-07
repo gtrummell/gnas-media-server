@@ -116,7 +116,7 @@
     "ports": [
       "5060/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config"
     ]
@@ -201,7 +201,7 @@
     "ports": [
       "5050/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/downloads",
@@ -413,7 +413,7 @@
     "ports": [
       "8181/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/downloads",
@@ -444,7 +444,7 @@
     "ports": [
       "8085/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config"
     ]
@@ -473,7 +473,7 @@
     "ports": [
       "9117/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/downloads"
@@ -509,7 +509,7 @@
       "8080/tcp",
       "9777/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config/.kodi"
     ]
@@ -538,7 +538,7 @@
     "ports": [
       "5299/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/books",
       "/config",
@@ -589,7 +589,7 @@
     "ports": [
       "443/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config"
     ]
@@ -622,7 +622,7 @@
     "ports": [
       "4040/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/music",
@@ -655,7 +655,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/data",
@@ -686,7 +686,7 @@
     "ports": [
       "7000/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config"
     ]
@@ -719,7 +719,7 @@
     "ports": [
       "3306/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config/linuxserver/mariadb"
     ]
@@ -749,7 +749,7 @@
       "8080/tcp",
       "25565/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/minecraft"
     ]
@@ -778,7 +778,7 @@
     "ports": [
       "8081/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/downloads",
@@ -809,7 +809,7 @@
     "ports": [
       "30000/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config/.minetest"
     ]
@@ -844,7 +844,7 @@
       "1900/tcp",
       "554/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config"
     ]
@@ -878,7 +878,7 @@
     "ports": [
       "5000/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/data"
@@ -908,7 +908,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config"
     ]
@@ -1091,7 +1091,7 @@
     "ports": [
       "5075/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/downloads"
@@ -1541,7 +1541,7 @@
       "8080/tcp",
       "9090/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/downloads",
@@ -1661,7 +1661,7 @@
     "ports": [
       "8989/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/dev/rtc:ro",
       "/config",
@@ -1734,7 +1734,7 @@
     "title": "Teamspeak 3",
     "description": "VoIP Communications Server",
     "logo": "https://www.teamspeak.com/assets/images/logos/teamspeak_small.png",
-    "image": "linuxserver/transmission:latest",
+    "image": "linuxserver/gsm-ts3:latest",
     "env": [
       {
         "name": "PGID",
@@ -1783,7 +1783,7 @@
       "51413/tcp",
       "51413/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       "/config",
       "/downloads/complete",
