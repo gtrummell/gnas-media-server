@@ -1786,8 +1786,8 @@
     "network": "bridge",
     "volumes": [
       "/config",
-      "/downloads/complete",
-      "/downloads/incomplete",
+      "/downloads",
+      "/incomplete",
       "/watch"
     ]
   },
