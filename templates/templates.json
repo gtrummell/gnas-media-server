@@ -1553,9 +1553,7 @@
     "network": "bridge",
     "volumes": [
       "/config",
-      "/downloads",
-      "/incomplete-downloads",
-      "/watch"
+      "/downloads"
     ]
   },
   {
@@ -1800,9 +1798,7 @@
     "network": "bridge",
     "volumes": [
       "/config",
-      "/downloads",
-      "/incomplete",
-      "/watch"
+      "/downloads"
     ]
   },
   {
