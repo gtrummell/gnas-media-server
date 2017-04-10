@@ -229,6 +229,9 @@
         "label": "Timezone (i.e. 'America/Los Angeles')"
       }
     ],
+    "ports": [
+      "80/tcp"
+    ],
     "network": "host",
     "volumes": [
       "/config",
@@ -287,7 +290,10 @@
       }
     ],
     "ports": [
-      "0/tcp"
+      "8112/tcp",
+      "58846/tcp",
+      "58946/tcp",
+      "58946/udp"
     ],
     "network": "host",
     "volumes": [
@@ -354,6 +360,9 @@
         "name": "TOKEN",
         "label": "Authorization Token for DuckDNS.org"
       }
+    ],
+    "ports": [
+      "53/udp"
     ],
     "network": "host",
     "volumes": [
@@ -1154,7 +1163,7 @@
       }
     ],
     "ports": [
-      "0/tcp"
+      "1194/udp"
     ],
     "network": "host",
     "privileged": "true",
@@ -1750,6 +1759,11 @@
         "name": "TZ",
         "label": "Timezone (i.e. 'America/Los Angeles')"
       }
+    ],
+    "ports": [
+      "9987/udp",
+      "10011/tcp",
+      "30033"
     ],
     "network": "host",
     "volumes": [
