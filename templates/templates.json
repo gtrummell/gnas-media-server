@@ -1677,6 +1677,43 @@
     ]
   },
   {
+    "title": "Splunk",
+    "description": "Log Analytics Tool",
+    "logo": "http://sl.com/wp-content/uploads/2016/10/mzl.tfigcody.png",
+    "image": "splunk/splunk:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "SPLUNK_START_ARGS",
+        "label": "Splunk Startup Arguments",
+        "set": "--accept-license"
+      }
+    ],
+    "ports": [
+      "514/udp",
+      "6514/tcp",
+      "8000/tcp",
+      "8089/tcp",
+      "9997/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      "/dev/rtc:ro",
+      "/opt/splunk/etc",
+      "/opt/splunk/var",
+      "/var/log:ro"
+    ]
+  },
+  {
     "title": "Syncthing",
     "description": "Personal Cloud File Synchronization Tool",
     "logo": "https://www.unixmen.com/wp-content/uploads/2015/01/Syncthing.png",
