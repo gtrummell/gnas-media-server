@@ -1461,7 +1461,7 @@
       "media",
       "server"
     ],
-    "image": "linuxserver/plex:latest",
+    "image": "plexinc/pms-docker:latest",
     "env": [
       {
         "name": "PGID",
@@ -1478,26 +1478,19 @@
         "label": "Timezone (i.e. 'America/Los Angeles')"
       },
       {
+        "name": "PLEX_CLAIM",
+        "label": "Plex Claim Token"
+      },
+      {
         "name": "VERSION",
         "label": "Plex Server Version",
         "set": "latest"
       }
     ],
-    "ports": [
-      "32400",
-      "32400/udp",
-      "32469",
-      "32469/udp",
-      "5353/udp",
-      "1900/udp"
-    ],
     "network": "host",
     "volumes": [
       "/config",
-      "/data/movies",
-      "/data/tv",
-      "/data/music",
-      "/data/pictures",
+      "/data",
       "/transcode"
     ]
   },
