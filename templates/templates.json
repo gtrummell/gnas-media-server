@@ -1464,12 +1464,12 @@
     "image": "plexinc/pms-docker:latest",
     "env": [
       {
-        "name": "PGID",
+        "name": "PLEX_GID",
         "label": "Group ID",
         "set": "65534"
       },
       {
-        "name": "PUID",
+        "name": "PLEX_UID",
         "label": "User ID",
         "set": "65534"
       },
