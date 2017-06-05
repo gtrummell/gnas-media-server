@@ -425,6 +425,65 @@
     ]
   },
   {
+    "title": "ELK Stack",
+    "description": "Elasticsearch, Logstash, Kibana Stack",
+    "logo": "https://www.elastic.co/static/images/elastic-logo-200.png",
+    "platform": "linux",
+    "categories": [
+      "server",
+      "tools"
+    ],
+    "image": "sebp/elk:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "set": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "set": "65534"
+      },
+      {
+        "name": "CLUSTER_NAME",
+        "label": "Cluster Name"
+      },
+      {
+        "name": "ES_HEAP_SIZE",
+        "label": "Elasticsearch Heap Size (256M to 1G)"
+      },
+      {
+        "name": "LS_HEAP_SIZE",
+        "label": "Logstash Heap Size (Default 500M)"
+      },
+      {
+        "name": "MAX_OPEN_FILES",
+        "label": "Max Open Files",
+        "set": "65535"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
+      }
+    ],
+    "ports": [
+      "514/udp",
+      "5044/tcp",
+      "5601/tcp",
+      "6514/tcp",
+      "9200/tcp",
+      "9300/tcp",
+      "9600/tcp"
+    ],
+    "network": "host",
+    "volumes": [
+      "/etc/logstash/conf.d/90-gnas-logs.conf",
+      "/var/lib/elasticsearch",
+      "/var/log"
+    ]
+  },
+  {
     "title": "FreshRSS",
     "description": "RSS Aggregator",
     "logo": "https://avatars1.githubusercontent.com/u/9414285?v=3&s=400",
