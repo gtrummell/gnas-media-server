@@ -1,0 +1,16 @@
+[Unit]
+Description=Transmission Service
+After=docker.service zfs-mount.service
+Requires=docker.service zfs-mount.service
+
+[Service]
+ExecStartPre=/usr/bin/docker pull linuxserver/transmission:latest
+ExecStart=/usr/bin/docker run -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 9091:9091/tcp -p 51413:51413/tcp -p 51413:51413/udp -v /storage/apps/transmission:/config -v /storage/media/Downloads/media:/downloads --name transmission --rm linuxserver/transmission:latest
+NotifyAccess=all
+Restart=always
+RestartSec=10s
+TimeoutStartSec=0
+Type=notify
+
+[Install]
+WantedBy=multi-user.target

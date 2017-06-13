@@ -1,0 +1,16 @@
+[Unit]
+Description=Sonarr Service
+After=docker.service zfs-mount.service
+Requires=docker.service zfs-mount.service
+
+[Service]
+ExecStartPre=/usr/bin/docker pull linuxserver/sonarr:latest
+ExecStart=/usr/bin/docker run -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 9000:9000/tcp -v /dev/rtc:/dev/rtc:ro -v /storage/apps/sonarr:/config -v /storage/media/Downloads/Media/complete/tv:/downloads -v /storage/media/TV:/tv --name sonarr --rm linuxserver/sonarr:latest
+NotifyAccess=all
+Restart=always
+RestartSec=10s
+TimeoutStartSec=0
+Type=notify
+
+[Install]
+WantedBy=multi-user.target
