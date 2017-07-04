@@ -436,18 +436,13 @@
     "image": "sebp/elk:latest",
     "env": [
       {
-        "name": "PGID",
-        "label": "Group ID",
-        "set": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "set": "65534"
-      },
-      {
         "name": "CLUSTER_NAME",
         "label": "Cluster Name"
+      },
+      {
+        "name": "ES_CONNECT_RETRY",
+        "label": "Kibana to Elasticsearch Connect Retry (seconds)",
+        "set": "90"
       },
       {
         "name": "ES_HEAP_SIZE",
@@ -456,11 +451,6 @@
       {
         "name": "LS_HEAP_SIZE",
         "label": "Logstash Heap Size (Default 500M)"
-      },
-      {
-        "name": "MAX_OPEN_FILES",
-        "label": "Max Open Files",
-        "set": "65535"
       },
       {
         "name": "TZ",
@@ -478,6 +468,7 @@
     ],
     "network": "host",
     "volumes": [
+      "/etc/localtime:ro",
       "/etc/logstash/conf.d/90-gnas-logs.conf",
       "/var/lib/elasticsearch",
       "/var/log"
