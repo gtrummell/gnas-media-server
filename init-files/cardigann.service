@@ -4,6 +4,8 @@ After=docker.service zfs-mount.service
 Requires=docker.service zfs-mount.service
 
 [Service]
+ExecStartPre=-/usr/bin/docker stop cardigann
+ExecStartPre=-/usr/bin/docker rm -f cardigann
 ExecStartPre=/usr/bin/docker pull linuxserver/cardigann:latest
 ExecStart=/usr/bin/docker run -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 5060:5060/tcp -v /storage/apps/cardigann:/config --name cardigann --rm linuxserver/cardigann:latest
 NotifyAccess=all

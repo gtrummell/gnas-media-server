@@ -4,6 +4,8 @@ After=docker.service zfs-mount.service
 Requires=docker.service zfs-mount.service
 
 [Service]
+ExecStartPre=-/usr/bin/docker stop hydra
+ExecStartPre=-/usr/bin/docker rm -f hydra
 ExecStartPre=/usr/bin/docker pull linuxserver/hydra:latest
 ExecStart=/usr/bin/docker run -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 5075:5075/tcp -v /storage/apps/hydra:/config -v /storage/media/Downloads/Media/complete:/downloads --name nzbhydra --rm linuxserver/hydra:latest
 NotifyAccess=all

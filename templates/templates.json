@@ -1065,6 +1065,11 @@
         "name": "BRAINZCODE",
         "label": "MusicBrainz API Key",
         "set": ""
+      },
+      {
+        "name": "WEBADDRESS",
+        "label": "IP Address of the server running Musicbrainz",
+        "set": ""
       }
     ],
     "ports": [

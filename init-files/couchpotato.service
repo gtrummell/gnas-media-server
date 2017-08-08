@@ -4,6 +4,8 @@ After=docker.service zfs-mount.service
 Requires=docker.service zfs-mount.service
 
 [Service]
+ExecStartPre=-/usr/bin/docker stop couchpotato
+ExecStartPre=-/usr/bin/docker rm -f couchpotato
 ExecStartPre=/usr/bin/docker pull linuxserver/couchpotato:latest
 ExecStart=/usr/bin/docker run -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 5050:5050/tcp -v /storage/apps/couchpotato:/config -v /storage/media/Downloads/Media/complete/movies:/downloads -v /storage/media/Movies:/movies --name couchpotato --rm linuxserver/couchpotato:latest
 NotifyAccess=all

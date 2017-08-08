@@ -4,8 +4,10 @@ After=docker.service zfs-mount.service
 Requires=docker.service zfs-mount.service
 
 [Service]
+ExecStartPre=-/usr/bin/docker stop sonarr
+ExecStartPre=-/usr/bin/docker rm -f sonarr
 ExecStartPre=/usr/bin/docker pull linuxserver/sonarr:latest
-ExecStart=/usr/bin/docker run -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 8989:8989/tcp -v /dev/rtc:/dev/rtc:ro -v /storage/apps/sonarr:/config -v /storage/media/Downloads/Media/complete/tv:/downloads -v /storage/media/TV:/tv --name sonarr --rm linuxserver/sonarr:latest
+ExecStart=/usr/bin/systemd-docker run -d -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 8989:8989/tcp -v /dev/rtc:/dev/rtc:ro -v /storage/apps/sonarr:/config -v /storage/media/Downloads/Media/complete/tv:/downloads -v /storage/media/TV:/tv --name sonarr --rm linuxserver/sonarr:latest
 NotifyAccess=all
 Restart=always
 RestartSec=10s

@@ -4,6 +4,8 @@ After=docker.service zfs-mount.service
 Requires=docker.service zfs-mount.service
 
 [Service]
+ExecStartPre=-/usr/bin/docker stop sabnzbd
+ExecStartPre=-/usr/bin/docker rm -f sabnzbd
 ExecStartPre=/usr/bin/docker pull linuxserver/sabnzbd:latest
 ExecStart=/usr/bin/docker run -e PGID=65534 -e PUID=65534 -e TZ="America/Los Angeles" -p 8080:8080/tcp -p 9090:9090/tcp -v /storage/apps/sabnzbd:/config -v /storage/media/Downloads/Media/complete:/downloads --name sabnzbd --rm linuxserver/sabnzbd:latest
 NotifyAccess=all
