@@ -1,13 +1,12 @@
 [
   {
-    "type": "container",
+    "type": 1,
     "title": "Apache",
     "description": "Web Server",
     "logo": "http://www.softaculous.com/website/images/ampps/apache.png",
     "platform": "linux",
     "categories": [
-      "web",
-      "server"
+      "web"
     ],
     "image": "linuxserver/apache:latest",
     "env": [
@@ -36,14 +35,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Beets",
     "description": "Music Library Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/beets-icon.png",
     "platform": "linux",
     "categories": [
-      "audio",
-      "library"
+      "audio"
     ],
     "image": "linuxserver/beets:latest",
     "env": [
@@ -73,14 +71,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Booksonic",
     "description": "Streaming Audiobook Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/booksonic.png",
     "platform": "linux",
     "categories": [
-      "epubs",
-      "library"
+      "epubs"
     ],
     "image": "linuxserver/booksonic:latest",
     "env": [
@@ -115,7 +112,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Cardigann",
     "description": "Torznab/Torrentpotato proxy",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cardigan.png",
@@ -146,7 +143,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Codiad",
     "description": "Web-based IDE Framework",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/codiad.png",
@@ -177,14 +174,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "COPS",
     "description": "Calibre Library Database OPDS/HTML Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cops-icon.png",
     "platform": "linux",
     "categories": [
-      "epubs",
-      "library"
+      "epubs"
     ],
     "image": "linuxserver/cops:latest",
     "env": [
@@ -213,14 +209,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "CouchPotato",
     "description": "Movie Manager",
     "logo": "https://couchpota.to/media/images/full.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "library"
+      "video"
     ],
     "image": "linuxserver/couchpotato:latest",
     "env": [
@@ -250,7 +245,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "DAAPD",
     "description": "iTunes Media Server",
     "logo": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-5fQa-7g8_seCZAI8Xy7_jv7AUi3takuV3dMDu-7gshPYxZp9PA",
@@ -286,7 +281,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Davos",
     "description": "FTP Automation Tool",
     "logo": "http://www.computerhope.com/issues/pictures/ftp.jpg",
@@ -321,7 +316,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Deluge",
     "description": "Bittorrent Client",
     "logo": "https://avatars2.githubusercontent.com/u/6733935?v=3&s=200",
@@ -359,7 +354,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Domoticz",
     "description": "Home Automation Server",
     "logo": "https://github.com/domoticz/domoticz/raw/master/www/images/logo.png",
@@ -395,7 +390,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "DuckDNS",
     "description": "On-demand DNS",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/duckdns.png",
@@ -437,7 +432,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "ELK Stack",
     "description": "Elasticsearch, Logstash, Kibana Stack",
     "logo": "https://www.elastic.co/static/images/elastic-logo-200.png",
@@ -488,7 +483,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "FreshRSS",
     "description": "RSS Aggregator",
     "logo": "https://avatars1.githubusercontent.com/u/9414285?v=3&s=400",
@@ -522,7 +517,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Headphones",
     "description": "Audio Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones-banner.png",
@@ -559,14 +554,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "HTPC Manager",
     "description": "Web Front-End for Home Theater PCs",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/htpcmanager-icon.png",
     "platform": "linux",
     "categories": [
-      "audio",
-      "library"
+      "audio"
     ],
     "image": "linuxserver/htpcmanager:latest",
     "env": [
@@ -594,7 +588,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Jackett",
     "description": "Torznab/Torrentpotato Proxy",
     "logo": "https://dominicm.com/wp-content/uploads/2016/05/jackett-arch-linux-450x489.png",
@@ -629,7 +623,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "KODI Headless",
     "description": "KODI Media Center Library Backend",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kodi-banner.png",
@@ -670,14 +664,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "LazyLibrarian",
     "description": "Digital Publication Metadata Collector",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lazylibrarian-icon.png",
     "platform": "linux",
     "categories": [
-      "epubs",
-      "library"
+      "epubs"
     ],
     "image": "linuxserver/lazylibrarian:latest",
     "env": [
@@ -707,7 +700,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Let's Encrypt",
     "description": "Free Automated SSL Certificate Provisioning",
     "logo": "https://letsencrypt.org/images/le-logo-lockonly.svg",
@@ -762,7 +755,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Libresonic",
     "description": "Streaming Media Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/libresonic.png",
@@ -805,7 +798,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Lychee",
     "description": "Photo management server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png",
@@ -842,7 +835,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Maraschino",
     "description": "Web Front-End for Kodi",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/maraschino.png",
@@ -877,7 +870,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "MariaDB",
     "description": "SQL Server",
     "logo": "https://global.download.synology.com/download/Package/img/MariaDB/5.5.53-0070/thumb_256.png",
@@ -916,7 +909,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "McMyAdmin2",
     "description": "Minecraft Web Admin Panel",
     "logo": "https://lh5.ggpht.com/FStFjVx__fqEyM80KRlkBaa5u8mtbZfldFiAnl8O4VHzRzIb6hiRMdHXrfzTZxQboKDw=w300",
@@ -952,14 +945,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Medusa",
     "description": "TV Series Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/medusa-readme.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "library"
+      "video"
     ],
     "image": "linuxserver/medusa:latest",
     "env": [
@@ -989,7 +981,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Minetest",
     "description": "Minecraft-like Game Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/minetest-icon.png",
@@ -1024,7 +1016,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Minisatip",
     "description": "Satellite TV to IP (satip) Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/minisatip-icon.png",
@@ -1065,14 +1057,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "MusicBrainz",
     "description": "Music Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/musicbrainzgitlogo.jpg",
     "platform": "linux",
     "categories": [
-      "audio",
-      "library"
+      "audio"
     ],
     "image": "linuxserver/musicbrainz:latest",
     "env": [
@@ -1111,7 +1102,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Muximux",
     "description": "HTPC Management Interface",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/muximux-icon.png",
@@ -1146,14 +1137,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Mylar",
     "description": "Comic Book Library Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mylar-icon.png",
     "platform": "linux",
     "categories": [
-      "epubs",
-      "library"
+      "epubs"
     ],
     "image": "linuxserver/mylar:latest",
     "env": [
@@ -1183,7 +1173,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "MySQL",
     "description": "Database Server",
     "logo": "https://leehblue.com/wp-content/uploads/2012/01/mysql-logo-175x175.png",
@@ -1222,7 +1212,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Nextcloud",
     "description": "Personal Cloud Storage",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nextcloud-icon.png",
@@ -1258,7 +1248,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Nginx",
     "description": "Web Server",
     "logo": "https://www.splunk.com/content/dam/splunk-blogs/images/2017/02/nginx-logo.png",
@@ -1294,7 +1284,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "NZBGet",
     "description": "Newsnab Binary Downloader",
     "logo": "https://avatars3.githubusercontent.com/u/3368377?v=3&s=400",
@@ -1329,7 +1319,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "NZBHydra",
     "description": "Newznab Indexer Proxy",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hydra-icon.png",
@@ -1364,7 +1354,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "OMBI",
     "description": "Plex Multiuser Management Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ombi.png",
@@ -1400,7 +1390,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "OpenVPN-AS",
     "description": "VPN Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openvpn-as-banner.png",
@@ -1441,7 +1431,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "OSCAM",
     "description": "DVB Descrambler Server/Client",
     "logo": "http://download.oscam.cc/images/Logo.png",
@@ -1476,7 +1466,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Photoshow",
     "description": "Photo Management Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/photoshow-icon.png",
@@ -1513,7 +1503,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Piwigo",
     "description": "Photo Management Server",
     "logo": "https://48jwh53mcwj217jvx11dcwjj-wpengine.netdna-ssl.com/wp-content/uploads/2011/02/logo-shadow.png",
@@ -1549,7 +1539,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Plex",
     "description": "Media Management Server",
     "logo": "http://blog.stillaslife.com/wp-content/uploads/2016/09/Plex-Logo.png",
@@ -1592,7 +1582,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Plexpy",
     "description": "Plex Usage Analytics",
     "logo": "http://peterman.ca/img/item05.jpg",
@@ -1628,7 +1618,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Plexrequests",
     "description": "Multi-user Plex Media Requests Manager",
     "logo": "https://us.v-cdn.net/6025034/uploads/ipb/profile/nphoto-135886.png",
@@ -1668,7 +1658,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Pydio",
     "description": "Personal Cloud Storage",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pydio-banner.png",
@@ -1705,7 +1695,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Quassel-Core",
     "description": "IRC Server and Web Client",
     "logo": "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-quassel-icon.png",
@@ -1741,7 +1731,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Radarr",
     "description": "Movie Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png",
@@ -1778,7 +1768,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Resilio-Sync",
     "description": "Bittorrent-based File Synchronization Server",
     "logo": "https://index.tnwcdn.com/images/d07f5726fcc0fbaa09e0afee611212256ca75e19.jpeg",
@@ -1815,7 +1805,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "RUTorrent",
     "description": "Bittorrent Client",
     "logo": "https://freedif.org/wp-content/uploads/2015/04/rtorrent-logo.png",
@@ -1853,7 +1843,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "SABnzbd",
     "description": "Newznab Binary Downloader",
     "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/02/sab2_512.png",
@@ -1889,14 +1879,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Sickbeard",
     "description": "TV Series Manager",
     "logo": "https://pbs.twimg.com/profile_images/1288187778/head_400x400.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "library"
+      "video"
     ],
     "image": "linuxserver/sickbeard:latest",
     "env": [
@@ -1926,14 +1915,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Sickrage",
     "description": "TV Series Manager",
     "logo": "http://strongcheese.com/images/Sickrage/sickrage_1.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "library"
+      "video"
     ],
     "image": "linuxserver/sickrage:latest",
     "env": [
@@ -1963,7 +1951,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Smokeping",
     "description": "Network Latency Monitor",
     "logo": "http://www.oetiker.ch//assets/OssProject/Logo/_resampled/CroppedFocusedImage600400-logo-smokeping.png",
@@ -1999,14 +1987,13 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Sonarr",
     "description": "TV Series Manager",
     "logo": "https://www.freebsdnews.com/wp-content/uploads/sonarr.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "library"
+      "video"
     ],
     "image": "linuxserver/sonarr:latest",
     "env": [
@@ -2033,7 +2020,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Splunk",
     "description": "Log Analytics Tool",
     "logo": "http://sl.com/wp-content/uploads/2016/10/mzl.tfigcody.png",
@@ -2075,7 +2062,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Syncthing",
     "description": "Personal Cloud File Synchronization Tool",
     "logo": "https://www.unixmen.com/wp-content/uploads/2015/01/Syncthing.png",
@@ -2113,7 +2100,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "TheLounge",
     "description": "IRC Server and Web Client",
     "logo": "https://raw.githubusercontent.com/linuxserver/community-templates/master/lsiocommunity/img/shout-icon.png",
@@ -2148,7 +2135,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Teamspeak 3",
     "description": "VoIP Communications Server",
     "logo": "https://www.teamspeak.com/assets/images/logos/teamspeak_small.png",
@@ -2186,7 +2173,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Transmission",
     "description": "Torrent Downloader",
     "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/04/transmission.png",
@@ -2223,7 +2210,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "TT-RSS",
     "description": "RSS Aggregator",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tt-rss-banner.png",
@@ -2258,7 +2245,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "TVheadend",
     "description": "Live TV Transcoder Server",
     "logo": "https://s31.postimg.io/8urk8vdu3/logobig.png",
@@ -2299,7 +2286,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Ubooquity",
     "description": "E-book and Comic Book Manager",
     "logo": "https://i.ytimg.com/vi/qfLG9nKt3ew/hqdefault.jpg",
@@ -2341,7 +2328,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "Unifi",
     "description": "Enterprise Wireless Network Controller",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-banner.png",
@@ -2380,7 +2367,7 @@
     ]
   },
   {
-    "type": "container",
+    "type": 1,
     "title": "ZNC",
     "description": "IRC Bouncer",
     "logo": "http://wiki.znc.in/resources/assets/wiki.png",
