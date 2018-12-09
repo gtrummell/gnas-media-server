@@ -1,0 +1,14 @@
+# IDE Files
+.idea/
+*.iml
+out
+gen
+tmp/
+temp/
+
+# Repository Files
+.git/
+.gitignore
+.travis.yml
+Makefile
+README
