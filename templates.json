@@ -13,12 +13,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -31,7 +31,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -48,12 +50,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -65,9 +67,15 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/downloads",
-      "/music"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/music"
+      }
     ]
   },
   {
@@ -84,12 +92,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -105,20 +113,27 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/books",
-      "/podcasts",
-      "/media"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/books"
+      },
+      {
+        "container": "/podcasts"
+      },
+      {
+        "container": "/media"
+      }
     ]
   },
   {
     "type": 1,
     "title": "Cardigann",
     "description": "Torznab/Torrentpotato proxy",
-    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cardigan.png",
+    "logo": "https://raw.githubusercontent.com/cardigann/cardigann/master/web/src/cardigann.gif",
     "platform": "linux",
     "categories": [
-      "video",
       "searcher"
     ],
     "image": "linuxserver/cardigann:latest",
@@ -126,12 +141,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       }
     ],
     "ports": [
@@ -139,38 +154,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config"
-    ]
-  },
-  {
-    "type": 1,
-    "title": "Codiad",
-    "description": "Web-based IDE Framework",
-    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/codiad.png",
-    "platform": "linux",
-    "image": "linuxserver/codiad:latest",
-    "categories": [
-      "tools"
-    ],
-    "env": [
       {
-        "name": "PGID",
-        "label": "Group ID",
-        "set": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "set": "65534"
+        "container": "/config"
       }
-    ],
-    "ports": [
-      "80/tcp"
-    ],
-    "network": "host",
-    "volumes": [
-      "/config",
-      "/etc/localtime:ro"
     ]
   },
   {
@@ -187,12 +173,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -204,8 +190,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/books"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/books"
+      }
     ]
   },
   {
@@ -222,12 +212,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -239,9 +229,15 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/downloads",
-      "/movies"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/movies"
+      }
     ]
   },
   {
@@ -251,20 +247,19 @@
     "logo": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-5fQa-7g8_seCZAI8Xy7_jv7AUi3takuV3dMDu-7gshPYxZp9PA",
     "platform": "linux",
     "categories": [
-      "media",
-      "server"
+      "media"
     ],
     "image": "linuxserver/daapd:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -276,8 +271,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/music"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/music"
+      }
     ]
   },
   {
@@ -287,19 +286,19 @@
     "logo": "http://www.computerhope.com/issues/pictures/ftp.jpg",
     "platform": "linux",
     "categories": [
-      "fileserver"
+      "storage"
     ],
     "image": "linuxserver/davos:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -311,8 +310,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -329,12 +332,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -349,8 +352,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -367,12 +374,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -386,7 +393,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -396,19 +405,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/duckdns.png",
     "platform": "linux",
     "categories": [
-      "tools"
+      "networking"
     ],
     "image": "linuxserver/duckdns:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -428,7 +437,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -438,8 +449,7 @@
     "logo": "https://www.elastic.co/static/images/elastic-logo-200.png",
     "platform": "linux",
     "categories": [
-      "server",
-      "tools"
+      "logging"
     ],
     "image": "sebp/elk:latest",
     "env": [
@@ -450,7 +460,7 @@
       {
         "name": "ES_CONNECT_RETRY",
         "label": "Kibana to Elasticsearch Connect Retry (seconds)",
-        "set": "90"
+        "default": "90"
       },
       {
         "name": "ES_HEAP_SIZE",
@@ -476,10 +486,18 @@
     ],
     "network": "host",
     "volumes": [
-      "/etc/localtime:ro",
-      "/etc/logstash/conf.d/90-gnas-logs.conf",
-      "/var/lib/elasticsearch",
-      "/var/log"
+      {
+        "container": "/etc/localtime:ro"
+      },
+      {
+        "container": "/etc/logstash/conf.d/90-gnas-logs.conf"
+      },
+      {
+        "container": "/var/lib/elasticsearch"
+      },
+      {
+        "container": "/var/log"
+      }
     ]
   },
   {
@@ -489,19 +507,19 @@
     "logo": "https://avatars1.githubusercontent.com/u/9414285?v=3&s=400",
     "platform": "linux",
     "categories": [
-      "tools"
+      "epubs"
     ],
     "image": "linuxserver/freshrss:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -513,7 +531,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -523,20 +543,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones-banner.png",
     "platform": "linux",
     "categories": [
-      "downloader",
-      "audio"
+      "searcher"
     ],
     "image": "linuxserver/headphones:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -548,9 +567,15 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/downloads",
-      "/music"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/music"
+      }
     ]
   },
   {
@@ -567,12 +592,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -584,7 +609,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -601,12 +628,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -618,8 +645,12 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -629,20 +660,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kodi-banner.png",
     "platform": "linux",
     "categories": [
-      "media",
-      "tools"
+      "media"
     ],
     "image": "linuxserver/kodi-headless:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -651,7 +681,7 @@
       {
         "name": "CUSTOM",
         "label": "Custom",
-        "set": "Cusomthing"
+        "default": "Cusomthing"
       }
     ],
     "ports": [
@@ -660,7 +690,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config/.kodi"
+      {
+        "container": "/config/.kodi"
+      }
     ]
   },
   {
@@ -677,12 +709,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -694,9 +726,15 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/books",
-      "/config",
-      "/downloads"
+      {
+        "container": "/books"
+      },
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -706,20 +744,19 @@
     "logo": "https://letsencrypt.org/images/le-logo-lockonly.svg",
     "platform": "linux",
     "categories": [
-      "security",
-      "server"
+      "security"
     ],
     "image": "linuxserver/letsencrypt:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -751,7 +788,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -761,20 +800,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/libresonic.png",
     "platform": "linux",
     "categories": [
-      "media",
-      "server"
+      "media"
     ],
     "image": "linuxserver/libresonic:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -790,11 +828,21 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/music",
-      "/playlists",
-      "/podcasts",
-      "/media"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/music"
+      },
+      {
+        "container": "/playlists"
+      },
+      {
+        "container": "/podcasts"
+      },
+      {
+        "container": "/media"
+      }
     ]
   },
   {
@@ -804,20 +852,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png",
     "platform": "linux",
     "categories": [
-      "photo",
-      "server"
+      "photo"
     ],
     "image": "linuxserver/lychee:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -829,9 +876,15 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/data",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -841,20 +894,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/maraschino.png",
     "platform": "linux",
     "categories": [
-      "media",
-      "tools"
+      "frontend"
     ],
     "image": "linuxserver/maraschino:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -866,7 +918,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -876,20 +930,19 @@
     "logo": "https://global.download.synology.com/download/Package/img/MariaDB/5.5.53-0070/thumb_256.png",
     "platform": "linux",
     "categories": [
-      "database",
-      "server"
+      "database"
     ],
     "image": "linuxserver/mariadb:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -905,7 +958,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config/linuxserver/mariadb"
+      {
+        "container": "/config/linuxserver/mariadb"
+      }
     ]
   },
   {
@@ -915,20 +970,19 @@
     "logo": "https://lh5.ggpht.com/FStFjVx__fqEyM80KRlkBaa5u8mtbZfldFiAnl8O4VHzRzIb6hiRMdHXrfzTZxQboKDw=w300",
     "platform": "linux",
     "categories": [
-      "game",
-      "server"
+      "gaming"
     ],
     "image": "linuxserver/mcmyadmin2:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -941,7 +995,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/minecraft"
+      {
+        "container": "/minecraft"
+      }
     ]
   },
   {
@@ -958,12 +1014,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -975,9 +1031,15 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/downloads",
-      "/tv"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/tv"
+      }
     ]
   },
   {
@@ -987,20 +1049,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/minetest-icon.png",
     "platform": "linux",
     "categories": [
-      "game",
-      "server"
+      "gaming"
     ],
     "image": "linuxserver/minetest:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1012,7 +1073,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config/.minetest"
+      {
+        "container": "/config/.minetest"
+      }
     ]
   },
   {
@@ -1022,20 +1085,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/minisatip-icon.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "server"
+      "video"
     ],
     "image": "linuxserver/minisatip:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1053,7 +1115,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -1070,12 +1134,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1084,12 +1148,12 @@
       {
         "name": "BRAINZCODE",
         "label": "MusicBrainz API Key",
-        "set": ""
+        "default": ""
       },
       {
         "name": "WEBADDRESS",
         "label": "IP Address of the server running Musicbrainz",
-        "set": ""
+        "default": ""
       }
     ],
     "ports": [
@@ -1097,8 +1161,12 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/data"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data"
+      }
     ]
   },
   {
@@ -1108,20 +1176,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/muximux-icon.png",
     "platform": "linux",
     "categories": [
-      "media",
-      "tools"
+      "frontend"
     ],
     "image": "linuxserver/muximux:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1133,7 +1200,9 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -1150,12 +1219,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1167,9 +1236,15 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/comics",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/comics"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -1179,20 +1254,19 @@
     "logo": "https://leehblue.com/wp-content/uploads/2012/01/mysql-logo-175x175.png",
     "platform": "linux",
     "categories": [
-      "database",
-      "server"
+      "database"
     ],
     "image": "linuxserver/mysql:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1208,7 +1282,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -1218,20 +1294,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nextcloud-icon.png",
     "platform": "linux",
     "categories": [
-      "storage",
-      "server"
+      "storage"
     ],
     "image": "linuxserver/nextcloud:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1243,8 +1318,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/data"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data"
+      }
     ]
   },
   {
@@ -1254,20 +1333,19 @@
     "logo": "https://www.splunk.com/content/dam/splunk-blogs/images/2017/02/nginx-logo.png",
     "platform": "linux",
     "categories": [
-      "web",
-      "server"
+      "web"
     ],
     "image": "linuxserver/nginx:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1280,7 +1358,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -1297,12 +1377,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1314,8 +1394,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -1332,12 +1416,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1349,8 +1433,12 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -1360,20 +1448,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ombi.png",
     "platform": "linux",
     "categories": [
-      "media",
-      "tools"
+      "frontend"
     ],
     "image": "linuxserver/ombi:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1385,8 +1472,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/etc/localtime:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
     ]
   },
   {
@@ -1396,20 +1487,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openvpn-as-banner.png",
     "platform": "linux",
     "categories": [
-      "vpn",
-      "server"
+      "vpn"
     ],
     "image": "linuxserver/openvpn-as:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1418,39 +1508,40 @@
       {
         "name": "INTERFACE",
         "label": "Interface",
-        "set": "eth0"
+        "default": "eth0"
       }
     ],
     "ports": [
       "1194/udp"
     ],
     "network": "host",
-    "privileged": "true",
+    "privileged": true,
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
     "type": 1,
     "title": "OSCAM",
     "description": "DVB Descrambler Server/Client",
-    "logo": "http://download.oscam.cc/images/Logo.png",
+    "logo": "https://i2.wp.com/stoffl.info/wp-content/uploads/2013/10/Logo.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "server"
+      "video"
     ],
     "image": "linuxserver/oscam:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1462,7 +1553,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -1472,20 +1565,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/photoshow-icon.png",
     "platform": "linux",
     "categories": [
-      "photo",
-      "server"
+      "photo"
     ],
     "image": "linuxserver/photoshow:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1497,32 +1589,37 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/Pictures",
-      "/Thumbs"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/Pictures"
+      },
+      {
+        "container": "/Thumbs"
+      }
     ]
   },
   {
     "type": 1,
     "title": "Piwigo",
     "description": "Photo Management Server",
-    "logo": "https://48jwh53mcwj217jvx11dcwjj-wpengine.netdna-ssl.com/wp-content/uploads/2011/02/logo-shadow.png",
+    "logo": "https://piwigo.us/dev/mistic100/logo-svg/piwigo-full.svg",
     "platform": "linux",
     "categories": [
-      "photo",
-      "server"
+      "photo"
     ],
     "image": "linuxserver/piwigo:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1534,31 +1631,34 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/etc/localtime:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
     ]
   },
   {
     "type": 1,
     "title": "Plex",
     "description": "Media Management Server",
-    "logo": "http://blog.stillaslife.com/wp-content/uploads/2016/09/Plex-Logo.png",
+    "logo": "https://images-na.ssl-images-amazon.com/images/I/61-kdNZrX9L.png",
     "platform": "linux",
     "categories": [
-      "media",
-      "server"
+      "media"
     ],
     "image": "plexinc/pms-docker:latest",
     "env": [
       {
         "name": "PLEX_GID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PLEX_UID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1571,14 +1671,20 @@
       {
         "name": "VERSION",
         "label": "Plex Server Version",
-        "set": "latest"
+        "default": "latest"
       }
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/data",
-      "/transcode"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data"
+      },
+      {
+        "container": "/transcode"
+      }
     ]
   },
   {
@@ -1588,20 +1694,19 @@
     "logo": "http://peterman.ca/img/item05.jpg",
     "platform": "linux",
     "categories": [
-      "media",
-      "tools"
+      "frontend"
     ],
     "image": "linuxserver/plexpy:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1613,8 +1718,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/logs:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/logs:ro"
+      }
     ]
   },
   {
@@ -1624,20 +1733,19 @@
     "logo": "https://us.v-cdn.net/6025034/uploads/ipb/profile/nphoto-135886.png",
     "platform": "linux",
     "categories": [
-      "media",
-      "tools"
+      "frontend"
     ],
     "image": "linuxserver/plexrequests:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1653,8 +1761,55 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/etc/localtime:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Prometheus",
+    "description": "Systems and service monitoring application",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Prometheus_software_logo.svg/230px-Prometheus_software_logo.svg.png",
+    "platform": "linux",
+    "categories": [
+      "monitoring"
+    ],
+    "image": "linuxserver/plexrequests:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "default": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "default": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
+      },
+      {
+        "name": "URL_BASE",
+        "label": "URL-base in reverse proxy setups"
+      }
+    ],
+    "ports": [
+      "3000/tcp"
+    ],
+    "network": "host",
+    "volumes": [
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
     ]
   },
   {
@@ -1664,20 +1819,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pydio-banner.png",
     "platform": "linux",
     "categories": [
-      "storage",
-      "server"
+      "storage"
     ],
     "image": "linuxserver/pydio:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1689,9 +1843,15 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/data",
-      "/etc/localtime:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
     ]
   },
   {
@@ -1701,20 +1861,19 @@
     "logo": "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-quassel-icon.png",
     "platform": "linux",
     "categories": [
-      "chat",
-      "server"
+      "chat"
     ],
     "image": "linuxserver/quassel-core:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1726,8 +1885,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/etc/localtime:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
     ]
   },
   {
@@ -1737,20 +1900,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "server"
+      "video"
     ],
     "image": "linuxserver/radarr:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1762,9 +1924,15 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/downloads",
-      "/movies"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/movies"
+      }
     ]
   },
   {
@@ -1774,20 +1942,19 @@
     "logo": "https://index.tnwcdn.com/images/d07f5726fcc0fbaa09e0afee611212256ca75e19.jpeg",
     "platform": "linux",
     "categories": [
-      "storage",
-      "server"
+      "storage"
     ],
     "image": "linuxserver/resilio-sync:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1800,15 +1967,19 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/sync"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/sync"
+      }
     ]
   },
   {
     "type": 1,
     "title": "RUTorrent",
     "description": "Bittorrent Client",
-    "logo": "https://freedif.org/wp-content/uploads/2015/04/rtorrent-logo.png",
+    "logo": "https://dominicm.com/wp-content/uploads/2017/03/rutorrent-arch-linux-1024x1024.png",
     "platform": "linux",
     "categories": [
       "downloader"
@@ -1818,12 +1989,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1838,8 +2009,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -1856,12 +2031,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1874,8 +2049,12 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -1892,12 +2071,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1909,16 +2088,22 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/data",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
     "type": 1,
     "title": "Sickrage",
     "description": "TV Series Manager",
-    "logo": "http://strongcheese.com/images/Sickrage/sickrage_1.png",
+    "logo": "https://www.sickrage.ca/img/small-logo.png",
     "platform": "linux",
     "categories": [
       "video"
@@ -1928,12 +2113,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1945,9 +2130,15 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/downloads",
-      "/tv"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/tv"
+      }
     ]
   },
   {
@@ -1957,20 +2148,19 @@
     "logo": "http://www.oetiker.ch//assets/OssProject/Logo/_resampled/CroppedFocusedImage600400-logo-smokeping.png",
     "platform": "linux",
     "categories": [
-      "network",
-      "tools"
+      "networking"
     ],
     "image": "linuxserver/smokeping:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -1982,8 +2172,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/data"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data"
+      }
     ]
   },
   {
@@ -2000,12 +2194,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       }
     ],
     "ports": [
@@ -2013,10 +2207,18 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/dev/rtc:ro",
-      "/config",
-      "/downloads",
-      "/tv"
+      {
+        "container": "/dev/rtc:ro"
+      },
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/tv"
+      }
     ]
   },
   {
@@ -2026,24 +2228,24 @@
     "logo": "http://sl.com/wp-content/uploads/2016/10/mzl.tfigcody.png",
     "platform": "linux",
     "categories": [
-      "tools"
+      "logging"
     ],
     "image": "splunk/splunk:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "SPLUNK_START_ARGS",
         "label": "Splunk Startup Arguments",
-        "set": "--accept-license"
+        "default": "--accept-license"
       }
     ],
     "ports": [
@@ -2055,10 +2257,18 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/dev/rtc:ro",
-      "/opt/splunk/etc",
-      "/opt/splunk/var",
-      "/var/log:ro"
+      {
+        "container": "/dev/rtc:ro"
+      },
+      {
+        "container": "/opt/splunk/etc"
+      },
+      {
+        "container": "/opt/splunk/var"
+      },
+      {
+        "container": "/var/log:ro"
+      }
     ]
   },
   {
@@ -2068,20 +2278,19 @@
     "logo": "https://www.unixmen.com/wp-content/uploads/2015/01/Syncthing.png",
     "platform": "linux",
     "categories": [
-      "storage",
-      "server"
+      "storage"
     ],
     "image": "linuxserver/syncthing:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2095,8 +2304,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/path/to/sync/target/dir"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/path/to/sync/target/dir"
+      }
     ]
   },
   {
@@ -2106,20 +2319,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/community-templates/master/lsiocommunity/img/shout-icon.png",
     "platform": "linux",
     "categories": [
-      "chat",
-      "server"
+      "chat"
     ],
     "image": "linuxserver/thelounge:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2131,30 +2343,31 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
     "type": 1,
     "title": "Teamspeak 3",
     "description": "VoIP Communications Server",
-    "logo": "https://www.teamspeak.com/assets/images/logos/teamspeak_small.png",
+    "logo": "https://www.teamspeak.com/user/themes/teamspeak/img/favicon/mstile-144x144.png",
     "platform": "linux",
     "categories": [
-      "chat",
-      "server"
+      "chat"
     ],
     "image": "linuxserver/gsm-ts3:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2168,8 +2381,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/etc/localtime:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
     ]
   },
   {
@@ -2186,12 +2403,12 @@
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2205,8 +2422,12 @@
     ],
     "network": "bridge",
     "volumes": [
-      "/config",
-      "/downloads"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      }
     ]
   },
   {
@@ -2216,19 +2437,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tt-rss-banner.png",
     "platform": "linux",
     "categories": [
-      "tools"
+      "epubs"
     ],
     "image": "linuxserver/tt-rss:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2240,8 +2461,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/etc/localtime:ro"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/etc/localtime:ro"
+      }
     ]
   },
   {
@@ -2251,20 +2476,19 @@
     "logo": "https://s31.postimg.io/8urk8vdu3/logobig.png",
     "platform": "linux",
     "categories": [
-      "video",
-      "server"
+      "video"
     ],
     "image": "linuxserver/tvheadend:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2281,8 +2505,12 @@
     ],
     "network": "host",
     "volumes": [
-      "/config",
-      "/recordings"
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/recordings"
+      }
     ]
   },
   {
@@ -2292,20 +2520,19 @@
     "logo": "https://i.ytimg.com/vi/qfLG9nKt3ew/hqdefault.jpg",
     "platform": "linux",
     "categories": [
-      "epubs",
-      "server"
+      "epubs"
     ],
     "image": "linuxserver/ubooquity:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2321,10 +2548,18 @@
     ],
     "network": "host",
     "volumes": [
-      "/books",
-      "/comics",
-      "/config",
-      "/files"
+      {
+        "container": "/books"
+      },
+      {
+        "container": "/comics"
+      },
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/files"
+      }
     ]
   },
   {
@@ -2334,20 +2569,19 @@
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-banner.png",
     "platform": "linux",
     "categories": [
-      "network",
-      "server"
+      "networking"
     ],
     "image": "linuxserver/unifi:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2363,7 +2597,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   },
   {
@@ -2373,20 +2609,19 @@
     "logo": "http://wiki.znc.in/resources/assets/wiki.png",
     "platform": "linux",
     "categories": [
-      "chat",
-      "server"
+      "chat"
     ],
     "image": "linuxserver/znc:latest",
     "env": [
       {
         "name": "PGID",
         "label": "Group ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "PUID",
         "label": "User ID",
-        "set": "65534"
+        "default": "65534"
       },
       {
         "name": "TZ",
@@ -2398,7 +2633,9 @@
     ],
     "network": "host",
     "volumes": [
-      "/config"
+      {
+        "container": "/config"
+      }
     ]
   }
 ]

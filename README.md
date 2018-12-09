@@ -1,77 +1,150 @@
-# GNAS Linuxserver HTPC App Templates
+# GNAS-Linuxserver.io HTPC Templates for Portainer
 
-[Documentation](https://github.com/gtrummell/gnas-portainer-templates/wiki)
+[![Build Status](https://travis-ci.org/gtrummell/gnas-portainer-templates.svg?branch=master)](https://travis-ci.org/gtrummell/gnas-portainer-templates)
 
-This repository hosts HTPC application template definitions for portainer.
+This repository hosts Portainer Application Templates for Linuxserver.io
+and several other HTPC Application Maintainers, intended for educational
+and hobbyist activities.  See the [GNAS-Linuxserver.io HTPC Templates for
+Portainer Wiki](https://github.com/gtrummell/gnas-portainer-templates/wiki)
+for more information.
 
 
-## GNAS Portainer templates:
+## Portainer and Portainer Templates
 
-* [Cardigann](https://hub.docker.com/r/linuxserver/cardigann) Torznab/Torrentpotato Proxy by [LinuxServer.io](https://linuxserver.io)
-* [CouchPotato](https://hub.docker.com/r/linuxserver/couchpotato) Movie Manager by [LinuxServer.io](https://linuxserver.io)
-* [Headphones](https://hub.docker.com/r/linuxserver/headphones) Audio Manager by [LinuxServer.io](https://linuxserver.io)
-* [Muximux](https://hub.docker.com/r/linuxserver/muximux) HTPC Management Interface by [LinuxServer.io](https://linuxserver.io)
-* [NZBHydra](https://hub.docker.com/r/linuxserver/hydra) Newznab Proxy by [LinuxServer.io](https://linuxserver.io)
-* [OpenVPN Access Server](https://hub.docker.com/r/linuxserver/openvpn-as) VPN Server by [LinuxServer.io](https://linuxserver.io)
-* [SABnzbd](https://hub.docker.com/r/linuxserver/sabnzbd) Newznab Downloader by [LinuxServer.io](https://linuxserver.io)
-* [Sonarr](https://hub.docker.com/r/linuxserver/sonarr) TV Series Manager by [LinuxServer.io](https://linuxserver.io)
-* [Transmission](https://hub.docker.com/r/linuxserver/transmission) Torrent Downloader by [LinuxServer.io](https://linuxserver.io)
+[Portainer](https://portainer.io/) is an open-source, lightweight management
+UI which allows you to easily manage your Docker hosts or Swarm clusters.
 
-Documentation is available [ReadTheDocs](http://portainer.readthedocs.io/en/latest/templates.html) for more information about the template definition format and how to deploy your own templates for Portainer.
+The Portainer App Template API and file format documentation are available
+at [ReadTheDocs.io](http://portainer.readthedocs.io/en/latest/templates.html).
+This repository is patterned after Portainer default templates, available
+on [Portainer's Templates repository on GitHub](https://github.com/portainer/templates).
 
-# Portainer compose setup
 
-Simple setup to deploy these Portainer custom templates.
+## GNAS-Linuxserver.ioCore Apps
 
-# Requirements
+Although GNAS is built on Portainer the core apps containerized by [LinuxServer.io](https://linuxserver.io),
+listed below.  Several other maintainer's containerized applications are
+included in the main templates file provided by this repository:
 
-1. Install [Docker](http://docker.io).
-2. Install [Docker-compose](http://docs.docker.com/compose/install/).
-3. Clone this repository
+* [Cardigann](https://hub.docker.com/r/linuxserver/cardigann) Torznab/Torrentpotato Proxy
+  by [LinuxServer.io](https://linuxserver.io)
+* [CouchPotato](https://hub.docker.com/r/linuxserver/couchpotato) Movie Manager
+  by [LinuxServer.io](https://linuxserver.io)
+* [Headphones](https://hub.docker.com/r/linuxserver/headphones) Audio Manager
+  by [LinuxServer.io](https://linuxserver.io)
+* [Muximux](https://hub.docker.com/r/linuxserver/muximux) HTPC Management Interface
+  by [LinuxServer.io](https://linuxserver.io)
+* [NZBHydra](https://hub.docker.com/r/linuxserver/hydra) Newznab Proxy
+  by [LinuxServer.io](https://linuxserver.io)
+* [OpenVPN Access Server](https://hub.docker.com/r/linuxserver/openvpn-as) VPN Server
+  by [LinuxServer.io](https://linuxserver.io)
+* [SABnzbd](https://hub.docker.com/r/linuxserver/sabnzbd) Newznab Downloader
+  by [LinuxServer.io](https://linuxserver.io)
+* [Sonarr](https://hub.docker.com/r/linuxserver/sonarr) TV Series Manager
+  by [LinuxServer.io](https://linuxserver.io)
+* [Transmission](https://hub.docker.com/r/linuxserver/transmission) Torrent Downloader
+  by [LinuxServer.io](https://linuxserver.io)
 
-# Usage
 
-The default configuration will connect Portainer against the local Docker host.
+## Requirements
+
+* [Docker](http://docker.io).
+* [Docker-compose](http://docs.docker.com/compose/install/).
+* [This repository: GNAS Linuxserver.io HTPC Templates for Portainer](https://github.com/gtrummell/gnas-portainer-templates).
+
+
+## Usage
+
+There are several means of using the GNAS-Linuxserver.io HTPC Portainer
+templates with Portainer.  They can be loaded via Portainer's UI, or at
+the `docker run` command line via the `--templates` switch.
+
+These configurations can be automated in Docker-compose files, or directly
+into a NAS via init files (i.e. systemd, upstart, SysV Init)
+
+### Dynamic Container-hosted templates
+
+The default Docker-compose stack in `stacks/gnas-linuxserver-local` is configured
+to build a `portainer-templates` container that serves the default templates
+file live to Portainer itself the `portainer-app` container.  This stack
+relies on Docker's built-in DNS to allow the app container to find the templates
+container.  The templates file can be live-edited and reloaded on disk,
+making this stack ideal for local development.
 
 Run it:
 
-```
-$ docker-compose up -d
-```
-
-And then access Portainer by hitting [http://localhost/portainer](http://localhost/portainer) with a web browser.
-
-# Configuration
-
-## How can I specify which Docker host I want to manage?
-
-You'll need to pass the IP/hostname of your Docker host to the portainer binary.
-
-Update the `command` field of the **portainer** service in the `docker-compose.yml` file:
-
-```yml
-portainer:
-  image: portainer/portainer
-  container_name: "portainer-app"
-  command: --templates http://templates/templates.json -d /data -H tcp://<DOCKER_HOST>:<DOCKER_PORT>
-  networks:
-    - local
+```bash
+cd stacks/gnas-linuxserver-local
+docker-compose up -d
 ```
 
-## How can I specify my own templates?
 
-Create the file `templates/templates.json` and insert your template definitions in it.
+### Remote HTTPS or GitHub-hosted templates
 
-For more information about the template definition format, see: https://github.com/portainer/templates
+If you prefer not to run your own web service to host template files, another
+option is to retrieve the raw file from GitHub.  This example pulls the
+GNAS-Linuxserver.io HTPC Portainer Templates as [raw JSON from GitHub](https://github.com/gtrummell/gnas-portainer-templates/blob/master/templates.json).
 
-Then, bind mount the file for the **templates** service in the `docker-compose.yml` file:
+Run it:
+
+```bash
+cd stacks/gnas-linuxserver-remote
+docker-compose up -d
+```
+
+
+### Using custom templates with dynamic Docker-compose stacks
+
+The following steps illustrate how to create your own custom templates
+and mount them in a webserver container.
+
+1. Copy an existing template or create a new template and save it to a new
+   file (i.e. `foo-stack-templates.json`) and insert your template definitions
+   into it.  Make sure this file is accessible to your Docker host.
+2. Copy an existing `docker-compose.yml` file, or create a new one.  Configure
+   the Nginx `portainer-templates` container to mount the directory containing
+   your new template file from the previous step.
+3. Run `docker-compose up -d` in the directory containing your new Docker-compose
+   file, then log into the Portainer host at http://localhost:9000 and begin using
+   your templates!
+
+This is an example `docker-compose.yml` section showing the `portainer-templates`
+service mounting a live templates directory on the host system:
 
 ```yml
 templates:
-  image: portainer/templates
-  container_name: "portainer-templates"
-  networks:
-    - local
+  container_name: portainer-templates
+  image: nginx:stable-alpine
+  ports:
+    - 8080:80/tcp
   volumes:
-    - ./templates:/usr/share/nginx/html
+    - /path/to/your-templates:/usr/share/nginx/html
+
+app:
+  command: [ "--templates", "http://portainer-templates/foo-stack-templates.json" ]
+  container_name: portainer-app
+  depends_on:
+    - templates
+  image: portainer/portainer:latest
+  ports:
+    - 9000:9000/tcp
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /var/lib/portainer:/data
+
 ```
+
+Then run it:
+
+```bash
+cd /parent/path-to/docker-compose-file/
+docker-compose up -d
+```
+
+
+### Building a Docker image containing templates
+
+If you are distributing your templates across multiple NAS servers, sharing
+your templates, or simply backing up your templates for convenient retrieval
+during a rebuild, you may want to copy your templates into a Docker image.
+Use the following steps to create a
