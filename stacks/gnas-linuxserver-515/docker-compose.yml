@@ -8,10 +8,11 @@ services:
       - PGID=65534
       - PUID=65534
     networks:
-      - gnas
+      - backend
     ports:
       - 5060:5060/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/cardigann:/config
 
   nzbhydra:
@@ -22,10 +23,11 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - gnas
+      - backend
     ports:
       - 5075:5075/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/nzbhydra:/config
       - /storage/Downloads:/downloads
 
@@ -37,11 +39,12 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - gnas
+      - backend
     ports:
       - 8080:8080/tcp
       - 9090:9090/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/sabnzbd:/config
       - /storage/Downloads:/downloads
 
@@ -54,8 +57,9 @@ services:
       - UMASK_SET=022
       - TZ='America/Los Angeles'
     networks:
-      - gnas
+      - backend
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/deluge:/config
       - /storage/Downloads:/downloads
 
@@ -67,10 +71,11 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - gnas
+      - backend
     ports:
       - 5050:5050/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/couchpotato:/config
       - /storage/Downloads:/downloads
       - /storage/Movies:/movies
@@ -82,10 +87,11 @@ services:
     container_name: sonarr
     image: linuxserver/sonarr:latest
     networks:
-      - gnas
+      - backend
     ports:
       - 8989:8989/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /dev/rtc:/dev/rtc:ro
       - /opt/gnas/sonarr:/config
       - /storage/Downloads:/downloads
@@ -99,10 +105,11 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - gnas
+      - backend
     ports:
-      - 8181:8181/tcp
+      - 8282:8181/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/headphones:/config
       - /storage/Downloads:/downloads
       - /storage:/music
@@ -115,11 +122,12 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - gnas
+      - backend
     ports:
       - 9881:9881/tcp
       - 9882:9882/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/tvheadend:/config
       - /storage/DVR:/recordings
 
@@ -133,11 +141,12 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - gnas
+      - backend
     ports:
       - 8181:8181/tcp
       - 9777:9777/udp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/kodi_headless:/config/.kodi
 
   mysql:
@@ -149,10 +158,11 @@ services:
       - TZ='America/Los Angeles'
       - MYSQL_ROOT_PASSWORD=SomethingSecure123!
     networks:
-      - gnas
+      - backend
     ports:
       - 3306:3306/tcp
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/mysql:/config
 
   openvpn_as:
@@ -164,13 +174,14 @@ services:
       - TZ='America/Los Angeles'
       - INTERFACE=eth0
     networks:
-      - gnas
+      - backend
     ports:
       - 1194:1194/udp
     privileged: true
     volumes:
+      - /opt/gnas/certs:/certs:ro
       - /opt/gnas/openvpn_as:/config
 
 networks:
-  gnas:
+  backend:
     driver: bridge
