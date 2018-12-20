@@ -1,0 +1,165 @@
+version: '3'
+
+services:
+  cardigann:
+    image: linuxserver/cardigann:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+    ports:
+      - 5060:5060/tcp
+    volumes:
+      - /opt/gnas/cardigann:/config
+
+  nzbhydra:
+    image: linuxserver/hydra:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ
+    ports:
+      - 5075:5075/tcp
+    volumes:
+      - /opt/gnas/nzbhydra:/config
+      - /storage/Downloads:/downloads
+
+  sabnzbd:
+    image: linuxserver/sabnzbd:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ
+    ports:
+      - 8080:8080/tcp
+      - 9090:9090/tcp
+    volumes:
+      - /opt/gnas/sabnzbd:/config
+      - /storage/Downloads:/downloads
+
+  transmission:
+    image: linuxserver/transmission:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ
+    ports:
+      - 9091:9091/tcp
+      - 51413:51413/tcp
+      - 51413:51413/udp
+    volumes:
+      - /opt/gnas/transmission:/config
+      - /storage/Downloads:/downloads
+
+  couchpotato:
+    image: linuxserver/couchpotato:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ
+    ports:
+      - 5050:5050/tcp
+    volumes:
+      - /opt/gnas/couchpotato:/config
+      - /storage/Downloads:/downloads
+      - /storage/Movies:/movies
+
+  sonarr:
+      - sonarr
+    env:
+      - PGID=65534
+      - PUID=65534
+    image: linuxserver/sonarr:latest
+    ports:
+      - 8989:8989/tcp
+    volumes:
+      - /dev/rtc:/dev/rtc:ro
+      - /opt/gnas/sonarr:/config
+      - /storage/Downloads:/downloads
+      - /storage/TV:/tv
+
+  headphones:
+    image: linuxserver/headphones:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+    ports:
+      - 8181:8181/tcp
+    network: bridge
+    volumes:
+      - /opt/gnas/headphones:/config
+      - /storage/Downloads:/downloads
+      - /storage:/music
+
+  tvheadend:
+    image: linuxserver/tvheadend:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+    ports:
+      - 9881:9881/tcp
+      - 9882:9882/tcp
+    network: host
+    volumes:
+      - /opt/gnas/tvheadend:/config
+      - /storage/DVR:/recordings
+
+  kodi_headless:
+    image: linuxserver/kodi-headless:latest
+    depends_on:
+      - mysql
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+    ports:
+      - 8080:8080/tcp
+      - 9777:9777/udp
+    network: bridge
+    volumes:
+      - /opt/gnas/kodi_headless:/config/.kodi
+
+  letsencrypt:
+    image: linuxserver/letsencrypt:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+      - DHLEVEL=Diffie-Hellmann bit value (4096 recommended)
+      - EMAIL=Email Address
+      - SUBDOMAINS=Subdomains
+      - URL=URL
+      - ONLY_SUBDOMAINS=Generate certificates for subdomains, not the main domain (default is false)
+    ports:
+      - 443:443/tcp
+    network: bridge
+    volumes:
+      - /opt/gnas/letsencrypt:/config
+
+  mysql:
+    image: linuxserver/mysql:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+      - MYSQL_ROOT_PASSWORD=SomethingSecure123!
+    ports:
+      - 3306:3306/tcp
+    network: host
+    volumes:
+      - /opt/gnas/mysql:/config
+
+  openvpn_as:
+    image: linuxserver/openvpn-as:latest
+    env:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+      - INTERFACE=eth0
+    ports:
+      - 1194:1194/udp
+    network: host
+    privileged: true
+    volumes:
+      - /opt/gnas/openvpn_as:/config
