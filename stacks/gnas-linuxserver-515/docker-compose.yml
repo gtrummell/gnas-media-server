@@ -58,6 +58,11 @@ services:
       - TZ='America/Los Angeles'
     networks:
       - backend
+    ports:
+      - 8112:8112
+      - 58846:58846
+      - 58946:58946
+      - 58946:58946/udp
     volumes:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/deluge:/config
