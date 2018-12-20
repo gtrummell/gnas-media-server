@@ -2,21 +2,27 @@ version: '2'
 
 services:
   cardigann:
+    container_name: cardigann
     image: linuxserver/cardigann:latest
     environment:
       - PGID=65534
       - PUID=65534
+    networks:
+      - gnas
     ports:
       - 5060:5060/tcp
     volumes:
       - /opt/gnas/cardigann:/config
 
   nzbhydra:
+    container_name: nzbhydra
     image: linuxserver/hydra:latest
     environment:
       - PGID=65534
       - PUID=65534
-      - TZ
+      - TZ='America/Los Angeles'
+    networks:
+      - gnas
     ports:
       - 5075:5075/tcp
     volumes:
@@ -24,11 +30,14 @@ services:
       - /storage/Downloads:/downloads
 
   sabnzbd:
+    container_name: sabnzbd
     image: linuxserver/sabnzbd:latest
     environment:
       - PGID=65534
       - PUID=65534
-      - TZ
+      - TZ='America/Los Angeles'
+    networks:
+      - gnas
     ports:
       - 8080:8080/tcp
       - 9090:9090/tcp
@@ -36,26 +45,29 @@ services:
       - /opt/gnas/sabnzbd:/config
       - /storage/Downloads:/downloads
 
-  transmission:
-    image: linuxserver/transmission:latest
+  deluge:
+    container_name: deluge
+    image: linuxserver/deluge:latest
     environment:
-      - PGID=65534
-      - PUID=65534
-      - TZ
-    ports:
-      - 9091:9091/tcp
-      - 51413:51413/tcp
-      - 51413:51413/udp
+      - PUID=1001
+      - PGID=1001
+      - UMASK_SET=022
+      - TZ='America/Los Angeles'
+    networks:
+      - gnas
     volumes:
-      - /opt/gnas/transmission:/config
+      - /opt/gnas/deluge:/config
       - /storage/Downloads:/downloads
 
   couchpotato:
+    container_name: couchpotato
     image: linuxserver/couchpotato:latest
     environment:
       - PGID=65534
       - PUID=65534
-      - TZ
+      - TZ='America/Los Angeles'
+    networks:
+      - gnas
     ports:
       - 5050:5050/tcp
     volumes:
@@ -67,7 +79,10 @@ services:
     environment:
       - PGID=65534
       - PUID=65534
+    container_name: sonarr
     image: linuxserver/sonarr:latest
+    networks:
+      - gnas
     ports:
       - 8989:8989/tcp
     volumes:
@@ -77,11 +92,14 @@ services:
       - /storage/TV:/tv
 
   headphones:
+    container_name: headphones
     image: linuxserver/headphones:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
+    networks:
+      - gnas
     ports:
       - 8181:8181/tcp
     volumes:
@@ -90,11 +108,14 @@ services:
       - /storage:/music
 
   tvheadend:
+    container_name: tvheadend
     image: linuxserver/tvheadend:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
+    networks:
+      - gnas
     ports:
       - 9881:9881/tcp
       - 9882:9882/tcp
@@ -103,6 +124,7 @@ services:
       - /storage/DVR:/recordings
 
   kodi_headless:
+    container_name: kodi_headless
     image: linuxserver/kodi-headless:latest
     depends_on:
       - mysql
@@ -110,49 +132,45 @@ services:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
+    networks:
+      - gnas
     ports:
-      - 8080:8080/tcp
+      - 8181:8181/tcp
       - 9777:9777/udp
     volumes:
       - /opt/gnas/kodi_headless:/config/.kodi
 
-  letsencrypt:
-    image: linuxserver/letsencrypt:latest
-    environment:
-      - PGID=65534
-      - PUID=65534
-      - TZ='America/Los Angeles'
-      - DHLEVEL=Diffie-Hellmann bit value (4096 recommended)
-      - EMAIL=Email Address
-      - SUBDOMAINS=Subdomains
-      - URL=URL
-      - ONLY_SUBDOMAINS=Generate certificates for subdomains, not the main domain (default is false)
-    ports:
-      - 443:443/tcp
-    volumes:
-      - /opt/gnas/letsencrypt:/config
-
   mysql:
+    container_name: mysql
     image: linuxserver/mysql:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
       - MYSQL_ROOT_PASSWORD=SomethingSecure123!
+    networks:
+      - gnas
     ports:
       - 3306:3306/tcp
     volumes:
       - /opt/gnas/mysql:/config
 
   openvpn_as:
+    container_name: openvpn_as
     image: linuxserver/openvpn-as:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
       - INTERFACE=eth0
+    networks:
+      - gnas
     ports:
       - 1194:1194/udp
     privileged: true
     volumes:
       - /opt/gnas/openvpn_as:/config
+
+networks:
+  gnas:
+    driver: bridge
