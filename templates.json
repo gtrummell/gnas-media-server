@@ -1,14 +1,14 @@
 [
   {
     "type": 1,
-    "title": "Apache",
-    "description": "Web Server",
-    "logo": "http://www.softaculous.com/website/images/ampps/apache.png",
+    "title": "Bazarr",
+    "description": "Subtitles Manager",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png",
     "platform": "linux",
     "categories": [
-      "web"
+      "subtitles"
     ],
-    "image": "linuxserver/apache:latest",
+    "image": "linuxserver/bazarr:latest",
     "env": [
       {
         "name": "PGID",
@@ -26,13 +26,18 @@
       }
     ],
     "ports": [
-      "80/tcp",
-      "443/tcp"
+      "6767/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
+      },
+      {
+        "container": "/downloads"
+      },
+      {
+        "container": "/music"
       }
     ]
   },
@@ -65,7 +70,7 @@
     "ports": [
       "8337/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -111,7 +116,7 @@
     "ports": [
       "4040/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -188,7 +193,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -269,7 +274,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -308,7 +313,7 @@
     "ports": [
       "8080/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -350,7 +355,7 @@
       "58946/tcp",
       "58946/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -435,7 +440,7 @@
     "ports": [
       "53/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -484,7 +489,7 @@
       "9300/tcp",
       "9600/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/etc/localtime:ro"
@@ -529,7 +534,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -847,6 +852,48 @@
   },
   {
     "type": 1,
+    "title": "Lidarr",
+    "description": "Music Collection Manager",
+    "logo": "https://github.com/lidarr/Lidarr/blob/develop/Logo/128.png?raw=true",
+    "platform": "linux",
+    "categories": [
+      "audio"
+    ],
+    "image": "linuxserver/lidarr:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "default": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "default": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
+      }
+    ],
+    "ports": [
+      "8686/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/music"
+      },
+      {
+        "container": "/downloads"
+      }
+    ]
+  },
+  {
+    "type": 1,
     "title": "Lychee",
     "description": "Photo management server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png",
@@ -960,43 +1007,6 @@
     "volumes": [
       {
         "container": "/config/linuxserver/mariadb"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "title": "McMyAdmin2",
-    "description": "Minecraft Web Admin Panel",
-    "logo": "https://lh5.ggpht.com/FStFjVx__fqEyM80KRlkBaa5u8mtbZfldFiAnl8O4VHzRzIb6hiRMdHXrfzTZxQboKDw=w300",
-    "platform": "linux",
-    "categories": [
-      "gaming"
-    ],
-    "image": "linuxserver/mcmyadmin2:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      }
-    ],
-    "ports": [
-      "8080/tcp",
-      "25565/tcp"
-    ],
-    "network": "bridge",
-    "volumes": [
-      {
-        "container": "/minecraft"
       }
     ]
   },
@@ -1234,7 +1244,7 @@
     "ports": [
       "8090:8090/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1251,39 +1261,55 @@
     "type": 1,
     "title": "MySQL",
     "description": "Database Server",
-    "logo": "https://leehblue.com/wp-content/uploads/2012/01/mysql-logo-175x175.png",
+    "logo": "https://raw.githubusercontent.com/docker-library/docs/c408469abbac35ad1e4a50a6618836420eb9502e/mysql/logo.png",
     "platform": "linux",
     "categories": [
       "database"
     ],
-    "image": "linuxserver/mysql:latest",
+    "image": "mysql:latest",
     "env": [
       {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      },
-      {
         "name": "MYSQL_ROOT_PASSWORD",
-        "label": "MySQL root password"
+        "label": "Mandatory.  Specifies the password that will be set for the MySQL root superuser account."
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "label": "Optional.  Allows you to specify the name of a database to be created on image startup. If a user/password was supplied (see additional variables) then that user will be granted superuser access (corresponding to GRANT ALL) to this database."
+      },
+      {
+        "name": "MYSQL_USER",
+        "label": "Optional.  Used to create a new user.  This user will be granted superuser permissions (see above) for the database specified by the MYSQL_DATABASE variable. This variable and MYSQL_PASSWORD variables are required for a user to be created.  Use the MYSQL_ROOT_PASSWORD variable separately to set the database root user password."
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "label": "Optional.  Used in conjunction to create a new user and to set that user's password. This user will be granted superuser permissions for the database specified by the MYSQL_DATABASE variable.  Both variables are required for a user to be created.  Use the MYSQL_ROOT_PASSWORD variable separately to set the database root user password."
+      },
+      {
+        "name": "MYSQL_ALLOW_EMPTY_PASSWORD",
+        "label": "Optional. Set to yes to allow the container to be started with a blank password for the root user. NOTE: Setting this variable to yes is not recommended unless you really know what you are doing, since this will leave your MySQL instance completely unprotected, allowing anyone to gain complete superuser access."
+      },
+      {
+        "name": "MYSQL_RANDOM_ROOT_PASSWORD",
+        "label": "Optional. Set to yes to generate a random initial password for the root user (using pwgen). The generated root password will be printed to stdout (GENERATED ROOT PASSWORD: .....)."
+      },
+      {
+        "name": "MYSQL_ONETIME_PASSWORD",
+        "label": "Sets root (not the user specified in MYSQL_USER!) user as expired once init is complete, forcing a password change on first login. NOTE: This feature is supported on MySQL 5.6+ only. Using this option on MySQL 5.5 will throw an appropriate error during initialization."
       }
     ],
     "ports": [
       "3306/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
-        "container": "/config"
+        "container": "/etc/mysql/my.cnf"
+      },
+      {
+        "container": "/etc/mysql/conf.d"
+      },
+      {
+        "container": "/data"
       }
     ]
   },
@@ -1316,7 +1342,7 @@
     "ports": [
       "443/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1356,7 +1382,7 @@
       "80/tcp",
       "443/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1392,7 +1418,7 @@
     "ports": [
       "6789/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1404,14 +1430,14 @@
   },
   {
     "type": 1,
-    "title": "NZBHydra",
+    "title": "NZBHydra2",
     "description": "Newznab Indexer Proxy",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hydra-icon.png",
     "platform": "linux",
     "categories": [
       "searcher"
     ],
-    "image": "linuxserver/hydra:latest",
+    "image": "linuxserver/hydra2:latest",
     "env": [
       {
         "name": "PGID",
@@ -1429,7 +1455,7 @@
       }
     ],
     "ports": [
-      "5075/tcp"
+      "5076/tcp"
     ],
     "network": "bridge",
     "volumes": [
@@ -1470,7 +1496,7 @@
     "ports": [
       "3579/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1514,7 +1540,7 @@
     "ports": [
       "1194/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "privileged": true,
     "volumes": [
       {
@@ -1551,7 +1577,7 @@
     "ports": [
       "8888/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1587,7 +1613,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1629,7 +1655,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1643,12 +1669,12 @@
     "type": 1,
     "title": "Plex",
     "description": "Media Management Server",
-    "logo": "https://images-na.ssl-images-amazon.com/images/I/61-kdNZrX9L.png",
+    "logo": "",
     "platform": "linux",
     "categories": [
       "media"
     ],
-    "image": "plexinc/pms-docker:latest",
+    "image": "http://the-gadgeteer.com/wp-content/uploads/2015/10/plex-logo-e1446990678679.png",
     "env": [
       {
         "name": "PLEX_GID",
@@ -1661,20 +1687,12 @@
         "default": "65534"
       },
       {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      },
-      {
-        "name": "PLEX_CLAIM",
-        "label": "Plex Claim Token"
-      },
-      {
         "name": "VERSION",
-        "label": "Plex Server Version",
-        "default": "latest"
+        "label": "Set to 'docker' to prevent in-container updates",
+        "default": "docker"
       }
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1684,88 +1702,6 @@
       },
       {
         "container": "/transcode"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "title": "Plexpy",
-    "description": "Plex Usage Analytics",
-    "logo": "http://peterman.ca/img/item05.jpg",
-    "platform": "linux",
-    "categories": [
-      "frontend"
-    ],
-    "image": "linuxserver/plexpy:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      }
-    ],
-    "ports": [
-      "8181/tcp"
-    ],
-    "network": "host",
-    "volumes": [
-      {
-        "container": "/config"
-      },
-      {
-        "container": "/logs:ro"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "title": "Plexrequests",
-    "description": "Multi-user Plex Media Requests Manager",
-    "logo": "https://us.v-cdn.net/6025034/uploads/ipb/profile/nphoto-135886.png",
-    "platform": "linux",
-    "categories": [
-      "frontend"
-    ],
-    "image": "linuxserver/plexrequests:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      },
-      {
-        "name": "URL_BASE",
-        "label": "URL-base in reverse proxy setups"
-      }
-    ],
-    "ports": [
-      "3000/tcp"
-    ],
-    "network": "host",
-    "volumes": [
-      {
-        "container": "/config"
-      },
-      {
-        "container": "/etc/localtime:ro"
       }
     ]
   },
@@ -1802,7 +1738,7 @@
     "ports": [
       "3000/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1841,7 +1777,7 @@
     "ports": [
       "443/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1851,6 +1787,45 @@
       },
       {
         "container": "/etc/localtime:ro"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Pyload",
+    "description": "Web Download Client for NAS",
+    "logo": "https://pyload.net/img/banner.png",
+    "platform": "linux",
+    "categories": [
+      "storage"
+    ],
+    "image": "linuxserver/pyload:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "default": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "default": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
+      }
+    ],
+    "ports": [
+      "8000/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
       }
     ]
   },
@@ -1883,13 +1858,59 @@
     "ports": [
       "4242/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
       },
       {
         "container": "/etc/localtime:ro"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "QBittorrent",
+    "description": "Bittorrent Client",
+    "logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png",
+    "platform": "linux",
+    "categories": [
+      "downloader"
+    ],
+    "image": "linuxserver/qbittorrent:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "default": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "default": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
+      },
+      {
+        "name": "WEBUI_PORT",
+        "label": "For changing the port of the Web UI",
+        "default": "8080"
+      }
+    ],
+    "ports": [
+      "6881/tcp",
+      "6881/udp",
+      "8080/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/downloads"
       }
     ]
   },
@@ -1922,7 +1943,7 @@
     "ports": [
       "7878/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -1965,7 +1986,7 @@
       "8888/tcp",
       "55555/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2007,7 +2028,7 @@
       "51413/tcp",
       "6881/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2086,7 +2107,7 @@
     "ports": [
       "8081/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2128,7 +2149,7 @@
     "ports": [
       "8081/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2170,7 +2191,7 @@
     "ports": [
       "8080/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2302,13 +2323,49 @@
       "22000/tcp",
       "21027/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
       },
       {
         "container": "/path/to/sync/target/dir"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Tautulli",
+    "description": "Plex Analytics",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tautulli-icon.png",
+    "platform": "linux",
+    "categories": [
+      "media"
+    ],
+    "image": "linuxserver/plex:latest",
+    "env": [
+      {
+        "name": "PLEX_GID",
+        "label": "Group ID",
+        "default": "65534"
+      },
+      {
+        "name": "PLEX_UID",
+        "label": "User ID",
+        "default": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
+      }
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/logs"
       }
     ]
   },
@@ -2341,7 +2398,7 @@
     "ports": [
       "9000/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2379,7 +2436,7 @@
       "10011/tcp",
       "30033"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2459,7 +2516,7 @@
     "ports": [
       "80/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2503,7 +2560,7 @@
       "9881/tcp",
       "9882/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2546,7 +2603,7 @@
     "ports": [
       "2202/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/books"
@@ -2564,14 +2621,14 @@
   },
   {
     "type": 1,
-    "title": "Unifi",
+    "title": "Unifi Controller",
     "description": "Enterprise Wireless Network Controller",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-banner.png",
     "platform": "linux",
     "categories": [
       "networking"
     ],
-    "image": "linuxserver/unifi:latest",
+    "image": "linuxserver/unifi-controller:latest",
     "env": [
       {
         "name": "PGID",
@@ -2589,13 +2646,15 @@
       }
     ],
     "ports": [
+      "3478/tcp",
       "8080/tcp",
       "8081/tcp",
       "8443/tcp",
       "8843/tcp",
-      "8880/tcp"
+      "8880/tcp",
+      "10001/udp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"
@@ -2631,7 +2690,7 @@
     "ports": [
       "6501/tcp"
     ],
-    "network": "host",
+    "network": "bridge",
     "volumes": [
       {
         "container": "/config"

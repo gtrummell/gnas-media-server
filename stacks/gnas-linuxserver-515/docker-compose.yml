@@ -69,7 +69,7 @@ services:
       - /storage/Downloads:/downloads
 
   couchpotato:
-    container_name: couchpotato
+    container_name: radarr
     image: linuxserver/couchpotato:latest
     environment:
       - PGID=65534
@@ -103,7 +103,7 @@ services:
       - /storage/TV:/tv
 
   headphones:
-    container_name: headphones
+    container_name: lidarr
     image: linuxserver/headphones:latest
     environment:
       - PGID=65534
