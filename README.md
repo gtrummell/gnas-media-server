@@ -147,4 +147,5 @@ docker-compose up -d
 If you are distributing your templates across multiple NAS servers, sharing
 your templates, or simply backing up your templates for convenient retrieval
 during a rebuild, you may want to copy your templates into a Docker image.
-Use the following steps to create a
+The included Docker image is an example of how to do so.  For more detailed
+instructions, visit [Portainer Documentation on Building Your Own Templates](https://portainer.readthedocs.io/en/stable/templates.html#build-and-host-your-own-templates).

@@ -10,7 +10,8 @@ services:
       - ../../:/usr/share/nginx/html:ro
 
   app:
-    command: ["--templates", "http://portainer-templates/templates.json"]
+    command: ["--templates",
+              "http://portainer-templates/templates.json"]
     container_name: portainer-app
     depends_on:
       - templates
