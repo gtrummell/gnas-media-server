@@ -1,63 +1,62 @@
-version: '2'
+version: '3'
 
 services:
-  cardigann:
-    container_name: cardigann
-    image: linuxserver/cardigann:latest
+  jackett:
+    container_name: jackett
+    image: linuxserver/jackett:latest
     environment:
       - PGID=65534
       - PUID=65534
     networks:
-      - backend
+      - inside
     ports:
       - 5060:5060/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/cardigann:/config
+      - /opt/gnas/jackett:/config
 
-  nzbhydra:
-    container_name: nzbhydra
-    image: linuxserver/hydra:latest
+  hydra2:
+    container_name: hydra2
+    image: linuxserver/hydra2:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - backend
+      - inside
     ports:
       - 5075:5075/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/nzbhydra:/config
+      - /opt/gnas/hydra2:/config
       - /storage/Downloads:/downloads
 
-  sabnzbd:
-    container_name: sabnzbd
-    image: linuxserver/sabnzbd:latest
+  nzbget:
+    container_name: nzbget
+    image: linuxserver/nzbget:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - backend
+      - inside
     ports:
-      - 8080:8080/tcp
-      - 9090:9090/tcp
+      - 6789:6789/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/sabnzbd:/config
+      - /opt/gnas/nzbget:/config
       - /storage/Downloads:/downloads
 
-  deluge:
-    container_name: deluge
-    image: linuxserver/deluge:latest
+  qbittorrent:
+    container_name: qbittorrent
+    image: linuxserver/qbittorrent:latest
     environment:
       - PUID=1001
       - PGID=1001
       - UMASK_SET=022
       - TZ='America/Los Angeles'
     networks:
-      - backend
+      - inside
     ports:
       - 8112:8112
       - 58846:58846
@@ -65,23 +64,23 @@ services:
       - 58946:58946/udp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/deluge:/config
+      - /opt/gnas/qbittorrent:/config
       - /storage/Downloads:/downloads
 
-  couchpotato:
+  radarr:
     container_name: radarr
-    image: linuxserver/couchpotato:latest
+    image: linuxserver/radarr:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - backend
+      - inside
     ports:
-      - 5050:5050/tcp
+      - 7878:7878/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/couchpotato:/config
+      - /opt/gnas/radarr:/config
       - /storage/Downloads:/downloads
       - /storage/Movies:/movies
 
@@ -92,7 +91,7 @@ services:
     container_name: sonarr
     image: linuxserver/sonarr:latest
     networks:
-      - backend
+      - inside
     ports:
       - 8989:8989/tcp
     volumes:
@@ -102,22 +101,22 @@ services:
       - /storage/Downloads:/downloads
       - /storage/TV:/tv
 
-  headphones:
+  lidarr:
     container_name: lidarr
-    image: linuxserver/headphones:latest
+    image: linuxserver/lidarr:latest
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - backend
+      - inside
     ports:
-      - 8282:8181/tcp
+      - 8686:8686/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/headphones:/config
+      - /opt/gnas/lidarr:/config
       - /storage/Downloads:/downloads
-      - /storage:/music
+      - /storage/Music:/music
 
   tvheadend:
     container_name: tvheadend
@@ -127,7 +126,7 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     networks:
-      - backend
+      - inside
     ports:
       - 9881:9881/tcp
       - 9882:9882/tcp
@@ -136,57 +135,56 @@ services:
       - /opt/gnas/tvheadend:/config
       - /storage/DVR:/recordings
 
-  kodi_headless:
-    container_name: kodi_headless
+  plex:
+    container_name: plex
     image: linuxserver/kodi-headless:latest
     depends_on:
       - mysql
     environment:
-      - PGID=65534
-      - PUID=65534
+      - PLEX_GID=65534
+      - PLEX_UID=65534
       - TZ='America/Los Angeles'
     networks:
-      - backend
-    ports:
-      - 8181:8181/tcp
-      - 9777:9777/udp
+      - host
     volumes:
-      - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/kodi_headless:/config/.kodi
+      - /opt/gnas/plex:/config
+      - /storage:/data
+      - /storage/Transcode:/transcode
 
-  mysql:
-    container_name: mysql
-    image: linuxserver/mysql:latest
+  openvpn-client:
+    container_name: openvpn-client
+    image: dperson/openvpn-client:latest
+    cap_add:
+      - net_admin
     environment:
       - PGID=65534
       - PUID=65534
-      - TZ='America/Los Angeles'
-      - MYSQL_ROOT_PASSWORD=SomethingSecure123!
+      - TZ='PST8PDT'
+    links:
+      - jackett
+      - hydra2
+      - nzbget
+      - qbittorrent
+      - radarr
+      - sonarr
+      - lidarr
+      - tvheadend
     networks:
-      - backend
-    ports:
-      - 3306:3306/tcp
+      - outside
+    read_only: true
+    security_opt:
+      - label:disable
+    stdin_open: true
+    tmpfs:
+      - /run
+      - /tmp
+    tty: true
     volumes:
-      - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/mysql:/config
-
-  openvpn_as:
-    container_name: openvpn_as
-    image: linuxserver/openvpn-as:latest
-    environment:
-      - PGID=65534
-      - PUID=65534
-      - TZ='America/Los Angeles'
-      - INTERFACE=eth0
-    networks:
-      - backend
-    ports:
-      - 1194:1194/udp
-    privileged: true
-    volumes:
-      - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/openvpn_as:/config
+      - /dev/net:/dev/net:z
+      - /opt/gnas/openvpn-client:/vpn
 
 networks:
-  backend:
+  inside:
+    driver: overlay
+  outside:
     driver: bridge

@@ -22,28 +22,12 @@ on [Portainer's Templates repository on GitHub](https://github.com/portainer/tem
 
 ## GNAS-Linuxserver.ioCore Apps
 
-Although GNAS is built on Portainer the core apps containerized by [LinuxServer.io](https://linuxserver.io),
-listed below.  Several other maintainer's containerized applications are
-included in the main templates file provided by this repository:
+GNAS is built using a variety of open-source projects.  All software in this repository reserves their rights as
+enumerated in their licenses.  For more information, see:
 
-* [Cardigann](https://hub.docker.com/r/linuxserver/cardigann) Torznab/Torrentpotato Proxy
-  by [LinuxServer.io](https://linuxserver.io)
-* [CouchPotato](https://hub.docker.com/r/linuxserver/couchpotato) Movie Manager
-  by [LinuxServer.io](https://linuxserver.io)
-* [Headphones](https://hub.docker.com/r/linuxserver/headphones) Audio Manager
-  by [LinuxServer.io](https://linuxserver.io)
-* [Muximux](https://hub.docker.com/r/linuxserver/muximux) HTPC Management Interface
-  by [LinuxServer.io](https://linuxserver.io)
-* [NZBHydra](https://hub.docker.com/r/linuxserver/hydra) Newznab Proxy
-  by [LinuxServer.io](https://linuxserver.io)
-* [OpenVPN Access Server](https://hub.docker.com/r/linuxserver/openvpn-as) VPN Server
-  by [LinuxServer.io](https://linuxserver.io)
-* [SABnzbd](https://hub.docker.com/r/linuxserver/sabnzbd) Newznab Downloader
-  by [LinuxServer.io](https://linuxserver.io)
-* [Sonarr](https://hub.docker.com/r/linuxserver/sonarr) TV Series Manager
-  by [LinuxServer.io](https://linuxserver.io)
-* [Transmission](https://hub.docker.com/r/linuxserver/transmission) Torrent Downloader
-  by [LinuxServer.io](https://linuxserver.io)
+* [Docker](https://docker.io) container management engine.
+* [Portainer](https://portainer.io) Docker container engine manager.
+* [LinuxServer.io](https://linuxserver.io), maintainer of respective projects used by these templates.
 
 
 ## Requirements
@@ -64,7 +48,7 @@ into a NAS via init files (i.e. systemd, upstart, SysV Init)
 
 ### Dynamic Container-hosted templates
 
-The default Docker-compose stack in `stacks/gnas-linuxserver-local` is configured
+The default Docker-compose stack in `stacks/gnas-bare-lsio-local` is configured
 to build a `portainer-templates` container that serves the default templates
 file live to Portainer itself the `portainer-app` container.  This stack
 relies on Docker's built-in DNS to allow the app container to find the templates
@@ -74,7 +58,7 @@ making this stack ideal for local development.
 Run it:
 
 ```bash
-cd stacks/gnas-linuxserver-local
+cd stacks/gnas-bare-lsio-local
 docker-compose up -d
 ```
 
@@ -88,7 +72,7 @@ GNAS-Linuxserver.io HTPC Portainer Templates as [raw JSON from GitHub](https://g
 Run it:
 
 ```bash
-cd stacks/gnas-linuxserver-remote
+cd stacks/gnas-bare-lsio-remote
 docker-compose up -d
 ```
 

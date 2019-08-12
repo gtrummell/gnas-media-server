@@ -5,6 +5,7 @@
     "description": "Subtitles Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "subtitles"
     ],
@@ -34,10 +35,10 @@
         "container": "/config"
       },
       {
-        "container": "/downloads"
+        "container": "/tv"
       },
       {
-        "container": "/music"
+        "container": "/movies"
       }
     ]
   },
@@ -47,6 +48,7 @@
     "description": "Music Library Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/beets-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "audio"
     ],
@@ -89,6 +91,7 @@
     "description": "Streaming Audiobook Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/booksonic.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "epubs"
     ],
@@ -134,42 +137,11 @@
   },
   {
     "type": 1,
-    "title": "Cardigann",
-    "description": "Torznab/Torrentpotato proxy",
-    "logo": "https://raw.githubusercontent.com/cardigann/cardigann/master/web/src/cardigann.gif",
-    "platform": "linux",
-    "categories": [
-      "searcher"
-    ],
-    "image": "linuxserver/cardigann:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      }
-    ],
-    "ports": [
-      "5060/tcp"
-    ],
-    "network": "bridge",
-    "volumes": [
-      {
-        "container": "/config"
-      }
-    ]
-  },
-  {
-    "type": 1,
     "title": "COPS",
     "description": "Calibre Library Database OPDS/HTML Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cops-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "epubs"
     ],
@@ -209,6 +181,7 @@
     "description": "Movie Manager",
     "logo": "https://couchpota.to/media/images/full.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
@@ -251,6 +224,7 @@
     "description": "iTunes Media Server",
     "logo": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-5fQa-7g8_seCZAI8Xy7_jv7AUi3takuV3dMDu-7gshPYxZp9PA",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "media"
     ],
@@ -290,6 +264,7 @@
     "description": "FTP Automation Tool",
     "logo": "http://www.computerhope.com/issues/pictures/ftp.jpg",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "storage"
     ],
@@ -329,6 +304,7 @@
     "description": "Bittorrent Client",
     "logo": "https://avatars2.githubusercontent.com/u/6733935?v=3&s=200",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "downloader"
     ],
@@ -371,6 +347,7 @@
     "description": "Home Automation Server",
     "logo": "https://github.com/domoticz/domoticz/raw/master/www/images/logo.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "automation"
     ],
@@ -409,6 +386,7 @@
     "description": "On-demand DNS",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/duckdns.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "networking"
     ],
@@ -453,6 +431,7 @@
     "description": "Elasticsearch, Logstash, Kibana Stack",
     "logo": "https://www.elastic.co/static/images/elastic-logo-200.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "logging"
     ],
@@ -511,6 +490,7 @@
     "description": "RSS Aggregator",
     "logo": "https://avatars1.githubusercontent.com/u/9414285?v=3&s=400",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "epubs"
     ],
@@ -547,6 +527,7 @@
     "description": "Audio Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones-banner.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "searcher"
     ],
@@ -589,6 +570,7 @@
     "description": "Web Front-End for Home Theater PCs",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/htpcmanager-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "audio"
     ],
@@ -625,6 +607,7 @@
     "description": "Torznab/Torrentpotato Proxy",
     "logo": "https://dominicm.com/wp-content/uploads/2016/05/jackett-arch-linux-450x489.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "searcher"
     ],
@@ -664,6 +647,7 @@
     "description": "KODI Media Center Library Backend",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kodi-banner.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "media"
     ],
@@ -706,6 +690,7 @@
     "description": "Digital Publication Metadata Collector",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lazylibrarian-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "epubs"
     ],
@@ -748,6 +733,7 @@
     "description": "Free Automated SSL Certificate Provisioning",
     "logo": "https://letsencrypt.org/images/le-logo-lockonly.svg",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "security"
     ],
@@ -800,62 +786,11 @@
   },
   {
     "type": 1,
-    "title": "Libresonic",
-    "description": "Streaming Media Server",
-    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/libresonic.png",
-    "platform": "linux",
-    "categories": [
-      "media"
-    ],
-    "image": "linuxserver/libresonic:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      },
-      {
-        "name": "CONTEXT_PATH",
-        "label": "URL base for reverse-proxy setups"
-      }
-    ],
-    "ports": [
-      "4040/tcp"
-    ],
-    "network": "bridge",
-    "volumes": [
-      {
-        "container": "/config"
-      },
-      {
-        "container": "/music"
-      },
-      {
-        "container": "/playlists"
-      },
-      {
-        "container": "/podcasts"
-      },
-      {
-        "container": "/media"
-      }
-    ]
-  },
-  {
-    "type": 1,
     "title": "Lidarr",
     "description": "Music Collection Manager",
     "logo": "https://github.com/lidarr/Lidarr/blob/develop/Logo/128.png?raw=true",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "audio"
     ],
@@ -898,6 +833,7 @@
     "description": "Photo management server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "photo"
     ],
@@ -940,6 +876,7 @@
     "description": "Web Front-End for Kodi",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/maraschino.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "frontend"
     ],
@@ -976,6 +913,7 @@
     "description": "SQL Server",
     "logo": "https://global.download.synology.com/download/Package/img/MariaDB/5.5.53-0070/thumb_256.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "database"
     ],
@@ -1016,6 +954,7 @@
     "description": "TV Series Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/medusa-readme.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
@@ -1058,6 +997,7 @@
     "description": "Minecraft-like Game Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/minetest-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "gaming"
     ],
@@ -1094,6 +1034,7 @@
     "description": "Satellite TV to IP (satip) Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/minisatip-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
@@ -1136,6 +1077,7 @@
     "description": "Music Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/musicbrainzgitlogo.jpg",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "audio"
     ],
@@ -1185,6 +1127,7 @@
     "description": "HTPC Management Interface",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/muximux-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "frontend"
     ],
@@ -1221,6 +1164,7 @@
     "description": "Comic Book Library Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mylar-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "epubs"
     ],
@@ -1263,6 +1207,7 @@
     "description": "Database Server",
     "logo": "https://raw.githubusercontent.com/docker-library/docs/c408469abbac35ad1e4a50a6618836420eb9502e/mysql/logo.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "database"
     ],
@@ -1319,6 +1264,7 @@
     "description": "Personal Cloud Storage",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nextcloud-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "storage"
     ],
@@ -1356,8 +1302,9 @@
     "type": 1,
     "title": "Nginx",
     "description": "Web Server",
-    "logo": "https://www.splunk.com/content/dam/splunk-blogs/images/2017/02/nginx-logo.png",
+    "logo": "https://www.logolynx.com/images/logolynx/61/61c738af9de36116116271f3003c9f07.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "web"
     ],
@@ -1395,6 +1342,7 @@
     "description": "Newsnab Binary Downloader",
     "logo": "https://avatars3.githubusercontent.com/u/3368377?v=3&s=400",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "downloader"
     ],
@@ -1434,6 +1382,7 @@
     "description": "Newznab Indexer Proxy",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hydra-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "searcher"
     ],
@@ -1473,6 +1422,7 @@
     "description": "Plex Multiuser Management Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ombi.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "frontend"
     ],
@@ -1509,42 +1459,105 @@
   {
     "type": 1,
     "title": "OpenVPN-AS",
-    "description": "VPN Server",
+    "description": "OpenVPN Access Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/openvpn-as-banner.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "vpn"
     ],
     "image": "linuxserver/openvpn-as:latest",
     "env": [
       {
+        "name": "INTERFACE",
+        "label": "Interface in container (bridge networking) or on "
+      },
+      {
         "name": "PGID",
-        "label": "Group ID",
+        "label": "Group ID for user in the container",
         "default": "65534"
       },
       {
         "name": "PUID",
-        "label": "User ID",
+        "label": "User ID for user in the container",
         "default": "65534"
       },
       {
         "name": "TZ",
         "label": "Timezone (i.e. 'America/Los Angeles')"
-      },
-      {
-        "name": "INTERFACE",
-        "label": "Interface",
-        "default": "eth0"
       }
     ],
     "ports": [
+      "943",
+      "9443",
       "1194/udp"
+    ],
+    "privileged": true,
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/config"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "OpenVPN Client",
+    "description": "OpenVPN Client for routing Docker traffic",
+    "logo": "https://raw.githubusercontent.com/dperson/openvpn-client/master/logo.png",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "vpn"
+    ],
+    "image": "dperson/openvpn-client:latest",
+    "env": [
+      {
+        "name": "CERT_AUTH",
+        "label": "Configure an authentication password to open the cert (Optional)"
+      },
+      {
+        "name": "DNS",
+        "label": "Use the VPN provider's DNS resolvers (IP address or leave empty.  Optional)"
+      },
+      {
+        "name": "FIREWALL",
+        "label": "Set Firewall to restrict Internet traffic if VPN is offline (Port number or leave empty. Optional)"
+      },
+      {
+        "name": "MSS",
+        "label": "Maximum Segment Size (Size in bytes or leave empty. Optional)"
+      },
+      {
+        "name": "ROUTE6",
+        "label": "IPv6 Network for which to add a route (IPv6 CIDR or leave empty. Optional)"
+      },
+      {
+        "name": "ROUTE",
+        "label": "IPv4 Network for which to add a route (IPv4 CIDR or leave empty. Optional)"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'PST8PDT'. Optional)"
+      },
+      {
+        "name": "VPN",
+        "label": "VPN server to connect. (vpn.domain.com;username;password or leave empty. Optional)"
+      },
+      {
+        "name": "VPNPORT",
+        "label": "Set up port forwarding. Can be used multiple times by appending numbers such as _1, _2, etc. (Port number or leave empty. Optional)"
+      },
+      {
+        "name": "GROUPID",
+        "label": "Set the Group ID for the VPN user. (Optional)"
+      }
     ],
     "network": "bridge",
     "privileged": true,
     "volumes": [
       {
-        "container": "/config"
+        "container": "/vpn"
       }
     ]
   },
@@ -1554,6 +1567,7 @@
     "description": "DVB Descrambler Server/Client",
     "logo": "https://i2.wp.com/stoffl.info/wp-content/uploads/2013/10/Logo.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
@@ -1590,6 +1604,7 @@
     "description": "Photo Management Server",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/photoshow-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "photo"
     ],
@@ -1632,6 +1647,7 @@
     "description": "Photo Management Server",
     "logo": "https://piwigo.us/dev/mistic100/logo-svg/piwigo-full.svg",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "photo"
     ],
@@ -1669,30 +1685,51 @@
     "type": 1,
     "title": "Plex",
     "description": "Media Management Server",
-    "logo": "",
+    "logo": "https://cdn.mos.cms.futurecdn.net/6a72657b487e2e48980ba8a09938b384-1200-80.jpg",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "media"
     ],
-    "image": "http://the-gadgeteer.com/wp-content/uploads/2015/10/plex-logo-e1446990678679.png",
+    "image": "plexinc/pms-docker:latest",
     "env": [
       {
+        "name": "ADVERTISE_IP",
+        "label": "Additional IPs on which the server may be found (for use with bridge networking)"
+      },
+      {
+        "name": "ALLOWED_NETWORKS",
+        "label": "CIDR notation for networks whitelisted against authentication",
+        "default": "192.168.1.0/24"
+      },
+      {
+        "name": "CHANGE_CONFIG_DIR_OWNERSHIP",
+        "label": "Change ownership of Plex config directory (defaults to true)"
+      },
+      {
+        "name": "HOSTNAME",
+        "label": "Hostname (for use with bridge networking)"
+      },
+      {
+        "name": "PLEX_CLAIM",
+        "label": "One-use claim token to activate a server (ignored if already active. obtain at https://www.plex.tv/claim)"
+      },
+      {
         "name": "PLEX_GID",
-        "label": "Group ID",
+        "label": "Group ID for Plex user in the container",
         "default": "65534"
       },
       {
         "name": "PLEX_UID",
-        "label": "User ID",
+        "label": "User ID for Plex user in the container",
         "default": "65534"
       },
       {
-        "name": "VERSION",
-        "label": "Set to 'docker' to prevent in-container updates",
-        "default": "docker"
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
       }
     ],
-    "network": "bridge",
+    "network": "host",
     "volumes": [
       {
         "container": "/config"
@@ -1711,6 +1748,7 @@
     "description": "Systems and service monitoring application",
     "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Prometheus_software_logo.svg/230px-Prometheus_software_logo.svg.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "monitoring"
     ],
@@ -1754,6 +1792,7 @@
     "description": "Personal Cloud Storage",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pydio-banner.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "storage"
     ],
@@ -1796,6 +1835,7 @@
     "description": "Web Download Client for NAS",
     "logo": "https://pyload.net/img/banner.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "storage"
     ],
@@ -1835,6 +1875,7 @@
     "description": "IRC Server and Web Client",
     "logo": "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-quassel-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "chat"
     ],
@@ -1874,6 +1915,7 @@
     "description": "Bittorrent Client",
     "logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "downloader"
     ],
@@ -1920,6 +1962,7 @@
     "description": "Movie Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
@@ -1962,6 +2005,7 @@
     "description": "Bittorrent-based File Synchronization Server",
     "logo": "https://index.tnwcdn.com/images/d07f5726fcc0fbaa09e0afee611212256ca75e19.jpeg",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "storage"
     ],
@@ -2002,6 +2046,7 @@
     "description": "Bittorrent Client",
     "logo": "https://dominicm.com/wp-content/uploads/2017/03/rutorrent-arch-linux-1024x1024.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "downloader"
     ],
@@ -2044,6 +2089,7 @@
     "description": "Newznab Binary Downloader",
     "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/02/sab2_512.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "downloader"
     ],
@@ -2080,56 +2126,15 @@
   },
   {
     "type": 1,
-    "title": "Sickbeard",
+    "title": "SickGear",
     "description": "TV Series Manager",
-    "logo": "https://pbs.twimg.com/profile_images/1288187778/head_400x400.png",
+    "logo": "https://raw.githubusercontent.com/wiki/SickGear/SickGear.Wiki/images/SickGearLogo.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
-    "image": "linuxserver/sickbeard:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      }
-    ],
-    "ports": [
-      "8081/tcp"
-    ],
-    "network": "bridge",
-    "volumes": [
-      {
-        "container": "/config"
-      },
-      {
-        "container": "/data"
-      },
-      {
-        "container": "/downloads"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "title": "Sickrage",
-    "description": "TV Series Manager",
-    "logo": "https://www.sickrage.ca/img/small-logo.png",
-    "platform": "linux",
-    "categories": [
-      "video"
-    ],
-    "image": "linuxserver/sickrage:latest",
+    "image": "linuxserver/sickgear:latest",
     "env": [
       {
         "name": "PGID",
@@ -2168,6 +2173,7 @@
     "description": "Network Latency Monitor",
     "logo": "http://www.oetiker.ch//assets/OssProject/Logo/_resampled/CroppedFocusedImage600400-logo-smokeping.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "networking"
     ],
@@ -2207,6 +2213,7 @@
     "description": "TV Series Manager",
     "logo": "https://www.freebsdnews.com/wp-content/uploads/sonarr.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
@@ -2248,6 +2255,7 @@
     "description": "Log Analytics Tool",
     "logo": "http://sl.com/wp-content/uploads/2016/10/mzl.tfigcody.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "logging"
     ],
@@ -2298,6 +2306,7 @@
     "description": "Personal Cloud File Synchronization Tool",
     "logo": "https://www.unixmen.com/wp-content/uploads/2015/01/Syncthing.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "storage"
     ],
@@ -2339,6 +2348,7 @@
     "description": "Plex Analytics",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tautulli-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "media"
     ],
@@ -2375,6 +2385,7 @@
     "description": "IRC Server and Web Client",
     "logo": "https://raw.githubusercontent.com/linuxserver/community-templates/master/lsiocommunity/img/shout-icon.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "chat"
     ],
@@ -2411,6 +2422,7 @@
     "description": "VoIP Communications Server",
     "logo": "https://www.teamspeak.com/user/themes/teamspeak/img/favicon/mstile-144x144.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "chat"
     ],
@@ -2452,6 +2464,7 @@
     "description": "Torrent Downloader",
     "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/04/transmission.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "downloader"
     ],
@@ -2493,6 +2506,7 @@
     "description": "RSS Aggregator",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tt-rss-banner.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "epubs"
     ],
@@ -2532,6 +2546,7 @@
     "description": "Live TV Transcoder Server",
     "logo": "https://s31.postimg.io/8urk8vdu3/logobig.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "video"
     ],
@@ -2576,6 +2591,7 @@
     "description": "E-book and Comic Book Manager",
     "logo": "https://i.ytimg.com/vi/qfLG9nKt3ew/hqdefault.jpg",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "epubs"
     ],
@@ -2621,52 +2637,11 @@
   },
   {
     "type": 1,
-    "title": "Unifi Controller",
-    "description": "Enterprise Wireless Network Controller",
-    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-banner.png",
-    "platform": "linux",
-    "categories": [
-      "networking"
-    ],
-    "image": "linuxserver/unifi-controller:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      }
-    ],
-    "ports": [
-      "3478/tcp",
-      "8080/tcp",
-      "8081/tcp",
-      "8443/tcp",
-      "8843/tcp",
-      "8880/tcp",
-      "10001/udp"
-    ],
-    "network": "bridge",
-    "volumes": [
-      {
-        "container": "/config"
-      }
-    ]
-  },
-  {
-    "type": 1,
     "title": "ZNC",
     "description": "IRC Bouncer",
     "logo": "http://wiki.znc.in/resources/assets/wiki.png",
     "platform": "linux",
+    "restart_policy": "unless-stopped",
     "categories": [
       "chat"
     ],
