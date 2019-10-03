@@ -1,45 +1,74 @@
 version: '3'
 
 services:
-  jackett:
-    container_name: jackett
-    image: linuxserver/jackett:latest
+  bazarr:
+    container_name: bazarr
+    image: linuxserver/bazarr:latest
+    restart: unless-stopped
     environment:
-      - PGID=65534
       - PUID=65534
-    networks:
-      - inside
+      - PGID=65534
+      - TZ='America/Los Angeles'
     ports:
-      - 5060:5060/tcp
+      - 6767:6767
     volumes:
-      - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/jackett:/config
+      - /opt/gnas/bazarr:/config
+      - /storage/Movies:/movies
+      - /storage/TV:/tv
 
   hydra2:
     container_name: hydra2
     image: linuxserver/hydra2:latest
+    restart: unless-stopped
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
-    networks:
-      - inside
     ports:
-      - 5075:5075/tcp
+      - 5076:5076/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/hydra2:/config
       - /storage/Downloads:/downloads
 
-  nzbget:
-    container_name: nzbget
-    image: linuxserver/nzbget:latest
+  jackett:
+    container_name: jackett
+    image: linuxserver/jackett:latest
+    restart: unless-stopped
+    environment:
+      - PGID=65534
+      - PUID=65534
+    ports:
+      - 9117:9117/tcp
+    volumes:
+      - /opt/gnas/certs:/certs:ro
+      - /opt/gnas/jackett:/config
+      - /storage/Downloads/complete:/downloads
+
+  lidarr:
+    container_name: lidarr
+    image: linuxserver/lidarr:latest
+    restart: unless-stopped
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
-    networks:
-      - inside
+    ports:
+      - 8686:8989/tcp
+    volumes:
+      - /opt/gnas/certs:/certs:ro
+      - /opt/gnas/lidarr:/config
+      - /storage/Downloads/complete/audio:/downloads
+      - /storage/Audio:/music
+
+  nzbget:
+    container_name: nzbget
+    image: linuxserver/nzbget:latest
+    restart: unless-stopped
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
     ports:
       - 6789:6789/tcp
     volumes:
@@ -47,21 +76,35 @@ services:
       - /opt/gnas/nzbget:/config
       - /storage/Downloads:/downloads
 
+
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker:latest
+    restart: unless-stopped
+    environment:
+      - PLEX_GID=65534
+      - PLEX_UID=65534
+      - TZ='America/Los Angeles'
+    network_mode: host
+    volumes:
+      - /opt/gnas/plex:/config
+      - /storage:/data
+      - /storage/Transcode:/transcode
+
   qbittorrent:
     container_name: qbittorrent
     image: linuxserver/qbittorrent:latest
+    restart: unless-stopped
     environment:
-      - PUID=1001
-      - PGID=1001
+      - PGID=65534
+      - PUID=65534
       - UMASK_SET=022
       - TZ='America/Los Angeles'
-    networks:
-      - inside
+      - WEBUI_PORT=8181
     ports:
-      - 8112:8112
-      - 58846:58846
-      - 58946:58946
-      - 58946:58946/udp
+      - 6881:6881
+      - 6881:6881/udp
+      - 8181:8181
     volumes:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/qbittorrent:/config
@@ -70,121 +113,31 @@ services:
   radarr:
     container_name: radarr
     image: linuxserver/radarr:latest
+    restart: unless-stopped
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
-    networks:
-      - inside
     ports:
       - 7878:7878/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/radarr:/config
-      - /storage/Downloads:/downloads
+      - /storage/Downloads/complete/movies:/downloads
       - /storage/Movies:/movies
 
   sonarr:
+    container_name: sonarr
+    image: linuxserver/sonarr:latest
+    restart: unless-stopped
     environment:
       - PGID=65534
       - PUID=65534
-    container_name: sonarr
-    image: linuxserver/sonarr:latest
-    networks:
-      - inside
+      - TZ='America/Los Angeles'
     ports:
       - 8989:8989/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /dev/rtc:/dev/rtc:ro
       - /opt/gnas/sonarr:/config
-      - /storage/Downloads:/downloads
+      - /storage/Downloads/complete/tv:/downloads
       - /storage/TV:/tv
-
-  lidarr:
-    container_name: lidarr
-    image: linuxserver/lidarr:latest
-    environment:
-      - PGID=65534
-      - PUID=65534
-      - TZ='America/Los Angeles'
-    networks:
-      - inside
-    ports:
-      - 8686:8686/tcp
-    volumes:
-      - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/lidarr:/config
-      - /storage/Downloads:/downloads
-      - /storage/Music:/music
-
-  tvheadend:
-    container_name: tvheadend
-    image: linuxserver/tvheadend:latest
-    environment:
-      - PGID=65534
-      - PUID=65534
-      - TZ='America/Los Angeles'
-    networks:
-      - inside
-    ports:
-      - 9881:9881/tcp
-      - 9882:9882/tcp
-    volumes:
-      - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/tvheadend:/config
-      - /storage/DVR:/recordings
-
-  plex:
-    container_name: plex
-    image: linuxserver/kodi-headless:latest
-    depends_on:
-      - mysql
-    environment:
-      - PLEX_GID=65534
-      - PLEX_UID=65534
-      - TZ='America/Los Angeles'
-    networks:
-      - host
-    volumes:
-      - /opt/gnas/plex:/config
-      - /storage:/data
-      - /storage/Transcode:/transcode
-
-  openvpn-client:
-    container_name: openvpn-client
-    image: dperson/openvpn-client:latest
-    cap_add:
-      - net_admin
-    environment:
-      - PGID=65534
-      - PUID=65534
-      - TZ='PST8PDT'
-    links:
-      - jackett
-      - hydra2
-      - nzbget
-      - qbittorrent
-      - radarr
-      - sonarr
-      - lidarr
-      - tvheadend
-    networks:
-      - outside
-    read_only: true
-    security_opt:
-      - label:disable
-    stdin_open: true
-    tmpfs:
-      - /run
-      - /tmp
-    tty: true
-    volumes:
-      - /dev/net:/dev/net:z
-      - /opt/gnas/openvpn-client:/vpn
-
-networks:
-  inside:
-    driver: overlay
-  outside:
-    driver: bridge
