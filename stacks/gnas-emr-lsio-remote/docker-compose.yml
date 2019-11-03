@@ -1,6 +1,23 @@
 version: '2'
 
 services:
+  cadvisor:
+    container_name: cadvisor
+    image: google/cadvisor:latest
+    restart: unless-stopped
+    environment:
+      - PUID=65534
+      - PGID=65534
+      - TZ='America/Los Angeles'
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+
   bazarr:
     container_name: bazarr
     image: linuxserver/bazarr:latest
@@ -54,7 +71,7 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
     ports:
-      - 8686:8989/tcp
+      - 8686:8686/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/lidarr:/config
