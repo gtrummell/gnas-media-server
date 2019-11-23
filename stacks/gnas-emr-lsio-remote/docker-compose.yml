@@ -62,6 +62,22 @@ services:
       - /opt/gnas/jackett:/config
       - /storage/Downloads/complete:/downloads
 
+  jellyfin:
+    container_name: jellyfin
+    image: linuxserver/jellyfin:latest
+    restart: unless-stopped
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+    ports": [
+      - 8096:8096/tcp
+      - 8920:8920/tcp
+    volumes:
+      - /opt/gnas/config:/config
+      - /storage:/data
+      - /storage/Transcode:/transcode
+
   lidarr:
     container_name: lidarr
     image: linuxserver/lidarr:latest
