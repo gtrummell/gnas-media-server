@@ -523,6 +523,33 @@
   },
   {
     "type": 1,
+    "title": "Grafana",
+    "description": "Metrics Graphing Tool",
+    "logo": "https://github.com/grafana/grafana/blob/master/docs/logo-swirl.svg",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "monitoring"
+    ],
+    "image": "grafana/grafana:latest",
+    "ports": [
+      "3000/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/etc/grafana/grafana.ini"
+      },
+      {
+        "container": "/var/lib/grafana"
+      },
+      {
+        "container": "/var/log/grafana"
+      }
+    ]
+  },
+  {
+    "type": 1,
     "title": "Headphones",
     "description": "Audio Manager",
     "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones-banner.png",
@@ -638,6 +665,59 @@
       },
       {
         "container": "/downloads"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Jellyfin",
+    "description": "Open source streaming media server",
+    "logo": "https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "searcher"
+    ],
+    "image": "linuxserver/jellyfin:latest",
+    "env": [
+      {
+        "name": "PGID",
+        "label": "Group ID",
+        "default": "65534"
+      },
+      {
+        "name": "PUID",
+        "label": "User ID",
+        "default": "65534"
+      },
+      {
+        "name": "TZ",
+        "label": "Timezone (i.e. 'America/Los Angeles')"
+      }
+    ],
+    "ports": [
+      "8096/tcp",
+      "8920/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/config"
+      },
+      {
+        "container": "/data/tvshows"
+      },
+      {
+        "container": "/data/movies"
+      },
+      {
+        "container": "/data/music"
+      },
+      {
+        "container": "/data/pictures"
+      },
+      {
+        "container": "/transcode"
       }
     ]
   },
