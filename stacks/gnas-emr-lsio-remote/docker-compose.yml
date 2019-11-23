@@ -74,7 +74,8 @@ services:
       - 8096:8096/tcp
       - 8920:8920/tcp
     volumes:
-      - /opt/gnas/jellyfin:/config
+      - /opt/gnas/jellyfin/config:/config
+      - /opt/gnas/jellyfin/plugins:/var/lib/jellyfin/plugins
       - /storage:/data
       - /storage/Transcode:/transcode
 
