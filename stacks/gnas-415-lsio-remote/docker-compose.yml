@@ -29,7 +29,7 @@ services:
     volumes:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/hydra2:/config
-      - /storage/Downloads:/downloads
+      - /storage/Downloads/complete:/downloads
 
   jackett:
     container_name: jackett
@@ -72,8 +72,6 @@ services:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
-    networks:
-      - default
     ports:
       - 8181:8080/tcp
       - 9191:9090/tcp
@@ -122,8 +120,6 @@ services:
       - PUID=65534
       - TZ='America/Los Angeles'
       - INTERFACE=eth0
-    networks:
-      - default
     ports:
       - 1194:1194/udp
     privileged: true
@@ -178,7 +174,8 @@ services:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/sabnzbd:/config
       - /storage/Downloads/complete:/downloads
-      - /storage/Downloads/incomplete/sabnzbd:/incomplete
+      - /storage/Downloads/incomplete/sabnzbd:/incomplete-downloads
+      - /storage/Downloads/watched/sabnzbd:/watch
 
   sonarr:
     container_name: sonarr
@@ -204,8 +201,6 @@ services:
       - PGID=65534
       - UMASK_SET=022
       - TZ='America/Los Angeles'
-    networks:
-      - default
     ports:
       - 8901:9091
       - 51413:51413/tcp
@@ -214,8 +209,8 @@ services:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/transmission:/config
       - /storage/Downloads/complete:/downloads
-      - /storage/Downloads/incomplete/transmission:/incomplete
-      - /storage/Downloads/watched:/watch
+      - /storage/Downloads/incomplete/transmission:/incomplete-downloads
+      - /storage/Downloads/watched/transmission:/watch
 
   sabnzbd_exporter:
     container_name: sabnzbd_exporter
