@@ -234,3 +234,5 @@ services:
     environment:
       - WEB_ADDR=:19091
       - TRANSMISSION_ADDR=http://gnas:8901
+    ports:
+      - 19091:19091/tcp
