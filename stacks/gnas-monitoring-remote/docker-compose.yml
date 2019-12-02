@@ -100,3 +100,5 @@ services:
       #- TRANSMISSION_PASSWORD= <uncomment and fill in with a password>
     ports:
       - 19091:19091/tcp
+    volumes:
+      - /etc/default/transmission-exporter:/.env
