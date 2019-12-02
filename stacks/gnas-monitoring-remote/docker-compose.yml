@@ -99,3 +99,5 @@ services:
       - TRANSMISSION_ADDR=http://gnas:9099
       #- TRANSMISSION_USERNAME= <uncomment and fill in with a username>
       #- TRANSMISSION_PASSWORD= <uncomment and fill in with a password>
+    ports:
+      - 19091:19091/tcp
