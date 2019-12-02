@@ -1,4 +1,4 @@
-# GNAS-Linuxserver.io HTPC Templates for Portainer
+# GNAS-Linuxserver.io Media Server Templates for Portainer
 
 [![Build Status](https://travis-ci.org/gtrummell/gnas-portainer-templates.svg?branch=master)](https://travis-ci.org/gtrummell/gnas-portainer-templates)
 
