@@ -20,7 +20,7 @@ This repository is patterned after Portainer default templates, available
 on [Portainer's Templates repository on GitHub](https://github.com/portainer/templates).
 
 
-## GNAS-Linuxserver.ioCore Apps
+## GNAS-Linuxserver.io Core Apps
 
 GNAS is built using a variety of open-source projects.  All software in this repository reserves their rights as
 enumerated in their licenses.  For more information, see:
@@ -132,7 +132,7 @@ docker-compose up -d
 If you are distributing your templates across multiple NAS servers, sharing
 your templates, or simply backing up your templates for convenient retrieval
 during a rebuild, you may want to copy your templates into a Docker image.
-The included Docker image is an example of how to do so.  For more detailed
+The included Dockerfile is an example of how to do so.  For more detailed
 instructions, visit [Portainer Documentation on Building Your Own Templates](https://portainer.readthedocs.io/en/stable/templates.html#build-and-host-your-own-templates).
 
 ## Usage - Portainer Stacks (Docker-compose files)
@@ -227,3 +227,25 @@ Using Git Repository with GNAS EMR would be configured as follows:
 * _Repository URL:_ `https://github.com/gtrummell/gnas-portainer-templates`
 * _Repository Reference:_ `/refs/heads/master`
 * _Compose Path:_ `stacks/gnas-emr-lsio-remote/docker-compose.yml`
+
+## How do I get my media files into my GNAS?
+Once you've launched a Portainer Stack, you can get your media into GNAS in one of
+several ways:
+* If your media files are already organized in a way that is compatible with the
+  media managers you want to use, simply move your files into the appropriate
+  directories.
+* If your files are not organized, you may want to place them into Download
+  directories respective of their type (i.e. `/storage/Downloads/audio`,
+  `storage/Downloads/movies`, etc.), then use your desired media managers to import
+  them.
+* If you are simply rebuilding, and your directory structure already matches, then
+  step 1 was a no-op for you.  You can simply launch your desired stack.
+
+## Troubleshooting, Notes, and TODOs
+* **IT'S PROBABLY PERMISSIONS!** GNAS runs everything as `nobody:nogroup`, or
+  `65534:65534`.  This works nicely due to the security properties of nobody/nogroup
+  and it is compatible with SAMBA.  Which, by the way...
+* **SAMBA/NFS is still run on the host.**  We still run SAMBA4 on the host because it's
+  dead simple, bulletproof, and we aren't on Active Directory networks.  You are welcome
+  to add a SAMBA container if you prefer.  If you get a good one, let me know and I'll
+  include it here.
