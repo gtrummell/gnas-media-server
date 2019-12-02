@@ -207,7 +207,7 @@ services:
     networks:
       - default
     ports:
-      - 9091:8091
+      - 8901:9091
       - 51413:51413/tcp
       - 51413:51413/udp
     volumes:
@@ -233,4 +233,4 @@ services:
     restart: on-failure
     environment:
       - WEB_ADDR=:19091
-      - TRANSMISSION_ADDR=http://gnas:9099
+      - TRANSMISSION_ADDR=http://gnas:8901
