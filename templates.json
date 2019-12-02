@@ -1824,45 +1824,94 @@
   },
   {
     "type": 1,
-    "title": "Prometheus",
-    "description": "Systems and service monitoring application",
+    "title": "Prometheus Server",
+    "description": "Systems and service monitoring application server",
     "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Prometheus_software_logo.svg/230px-Prometheus_software_logo.svg.png",
     "platform": "linux",
     "restart_policy": "unless-stopped",
     "categories": [
       "monitoring"
     ],
-    "image": "linuxserver/plexrequests:latest",
-    "env": [
-      {
-        "name": "PGID",
-        "label": "Group ID",
-        "default": "65534"
-      },
-      {
-        "name": "PUID",
-        "label": "User ID",
-        "default": "65534"
-      },
-      {
-        "name": "TZ",
-        "label": "Timezone (i.e. 'America/Los Angeles')"
-      },
-      {
-        "name": "URL_BASE",
-        "label": "URL-base in reverse proxy setups"
-      }
-    ],
+    "image": "prom/prometheus:latest",
     "ports": [
-      "3000/tcp"
+      "9090/tcp"
     ],
     "network": "bridge",
     "volumes": [
       {
-        "container": "/config"
+        "container": "/etc/prometheus/prometheus.yml"
       },
       {
-        "container": "/etc/localtime:ro"
+        "container": "/prometheus"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Prometheus Alertmanager",
+    "description": "Systems and service monitoring alert management",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Prometheus_software_logo.svg/230px-Prometheus_software_logo.svg.png",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "monitoring"
+    ],
+    "image": "prom/alertmanager:latest",
+    "ports": [
+      "9093/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/etc/prometheus/alertmanager.yml"
+      },
+      {
+        "container": "/alertmanager"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Prometheus Pushgateway",
+    "description": "Systems and service monitoring scheduled jobs report receiver",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Prometheus_software_logo.svg/230px-Prometheus_software_logo.svg.png",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "monitoring"
+    ],
+    "image": "prom/pushgateway:latest",
+    "ports": [
+      "9091/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/pushgateway"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Prometheus Alertmanager",
+    "description": "Systems and service monitoring alert management",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Prometheus_software_logo.svg/230px-Prometheus_software_logo.svg.png",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "monitoring"
+    ],
+    "image": "prom/alertmanager:latest",
+    "ports": [
+      "9093/tcp"
+    ],
+    "network": "bridge",
+    "volumes": [
+      {
+        "container": "/etc/prometheus/alertmanager.yml"
+      },
+      {
+        "container": "/alertmanager"
       }
     ]
   },
@@ -2203,6 +2252,34 @@
         "container": "/downloads"
       }
     ]
+  },
+  {
+    "type": 1,
+    "title": "SABnzbd Prom Exporter",
+    "description": "SABnzbd Prometheus Exporter",
+    "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/02/sab2_512.png",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "downloader"
+    ],
+    "image": "msroest/sabnzbd_exporter:latest",
+    "env": [
+      {
+        "name": "SABNZBD_BASEURL",
+        "label": "SabNZBd Base URL",
+        "default": "65534"
+      },
+      {
+        "name": "SABNZBD_APIKEY",
+        "label": "SabNZBd API Key",
+        "default": "65534"
+      }
+    ],
+    "ports": [
+      "9387/tcp"
+    ],
+    "network": "bridge"
   },
   {
     "type": 1,
@@ -2579,6 +2656,34 @@
         "container": "/downloads"
       }
     ]
+  },
+  {
+    "type": 1,
+    "title": "Transmission Prom Exporter",
+    "description": "Transmission Prometheus Exporter",
+    "logo": "http://www.filesharingguides.com/wp-content/uploads/2014/04/transmission.png",
+    "platform": "linux",
+    "restart_policy": "unless-stopped",
+    "categories": [
+      "downloader"
+    ],
+    "image": "metalmatze/transmission-exporter:latest",
+    "env": [
+      {
+        "name": "WEB_ADDR",
+        "label": "Exporter Port",
+        "default": "19091"
+      },
+      {
+        "name": "TRANSMISSION_ADDR",
+        "label": "Transmission Address",
+        "default": "http://gnas:9099"
+      }
+    ],
+    "ports": [
+      "19091/tcp"
+    ],
+    "network": "bridge"
   },
   {
     "type": 1,

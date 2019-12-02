@@ -52,20 +52,21 @@ services:
     container_name: transmission
     image: linuxserver/transmission:latest
     environment:
-      - PUID=1001
-      - PGID=1001
+      - PUID=65534
+      - PGID=65534
       - UMASK_SET=022
       - TZ='America/Los Angeles'
     networks:
       - default
     ports:
-      - 9091:9091
-      - 51413:51413
+      - 9091:8091
+      - 51413:51413/tcp
       - 51413:51413/udp
     volumes:
       - /opt/gnas/certs:/certs:ro
       - /opt/gnas/transmission:/config
-      - /storage/Downloads:/downloads
+      - /storage/Downloads/complete:/downloads
+      - /storage/Downloads/incomplete/transmission:/incomplete
       - /storage/Downloads/watched:/watch
 
   couchpotato:
