@@ -63,6 +63,25 @@ services:
       - /storage:/data
       - /storage/Transcode:/transcode
 
+  kodi_headless:
+    container_name: kodi_headless
+    image: linuxserver/kodi-headless:latest
+    depends_on:
+      - mysql
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+    networks:
+      - default
+    ports:
+      - 8080:8181/tcp
+      - 9090:9191/tcp
+      - 9777:9777/udp
+    volumes:
+      - /opt/gnas/certs:/certs:ro
+      - /opt/gnas/kodi_headless:/config/.kodi
+
   lidarr:
     container_name: lidarr
     image: linuxserver/lidarr:latest
@@ -79,20 +98,38 @@ services:
       - /storage/Downloads/complete/audio:/downloads
       - /storage/Audio:/music
 
-  nzbget:
-    container_name: nzbget
-    image: linuxserver/nzbget:latest
-    restart: on-failure
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
     environment:
       - PGID=65534
       - PUID=65534
       - TZ='America/Los Angeles'
+      - MYSQL_ROOT_PASSWORD=SomethingSecure123!
+    networks:
+      - default
     ports:
-      - 6789:6789/tcp
+      - 3306:3306/tcp
     volumes:
       - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/nzbget:/config
-      - /storage/Downloads:/downloads
+      - /opt/gnas/mysql:/config
+
+  openvpn_as:
+    container_name: openvpn_as
+    image: linuxserver/openvpn-as:latest
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+      - INTERFACE=eth0
+    networks:
+      - default
+    ports:
+      - 1194:1194/udp
+    privileged: true
+    volumes:
+      - /opt/gnas/certs:/certs:ro
+      - /opt/gnas/openvpn_as:/config
 
   plex:
     container_name: plex
@@ -108,25 +145,6 @@ services:
       - /opt/gnas/plex:/config
       - /storage:/data
       - /storage/Transcode:/transcode
-
-  qbittorrent:
-    container_name: qbittorrent
-    image: linuxserver/qbittorrent:latest
-    restart: on-failure
-    environment:
-      - PGID=65534
-      - PUID=65534
-      - UMASK_SET=022
-      - TZ='America/Los Angeles'
-      - WEBUI_PORT=8181
-    ports:
-      - 6881:6881
-      - 6881:6881/udp
-      - 8181:8181
-    volumes:
-      - /opt/gnas/certs:/certs:ro
-      - /opt/gnas/qbittorrent:/config
-      - /storage/Downloads:/downloads
 
   radarr:
     container_name: radarr
@@ -144,6 +162,24 @@ services:
       - /storage/Downloads/complete/movies:/downloads
       - /storage/Movies:/movies
 
+  sabnzbd:
+    container_name: sabnzbd
+    image: linuxserver/sabnzbd:latest
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ='America/Los Angeles'
+    networks:
+      - default
+    ports:
+      - 8080:8088/tcp
+      - 9090:8099/tcp
+    volumes:
+      - /opt/gnas/certs:/certs:ro
+      - /opt/gnas/sabnzbd:/config
+      - /storage/Downloads/complete:/downloads
+      - /storage/Downloads/incomplete/sabnzbd:/incomplete
+
   sonarr:
     container_name: sonarr
     image: linuxserver/sonarr:latest
@@ -159,3 +195,42 @@ services:
       - /opt/gnas/sonarr:/config
       - /storage/Downloads/complete/tv:/downloads
       - /storage/TV:/tv
+
+  transmission:
+    container_name: transmission
+    image: linuxserver/transmission:latest
+    environment:
+      - PUID=65534
+      - PGID=65534
+      - UMASK_SET=022
+      - TZ='America/Los Angeles'
+    networks:
+      - default
+    ports:
+      - 9091:8091
+      - 51413:51413/tcp
+      - 51413:51413/udp
+    volumes:
+      - /opt/gnas/certs:/certs:ro
+      - /opt/gnas/transmission:/config
+      - /storage/Downloads/complete:/downloads
+      - /storage/Downloads/incomplete/transmission:/incomplete
+      - /storage/Downloads/watched:/watch
+
+  sabnzbd_exporter:
+    container_name: sabnzbd_exporter
+    image: msroest/sabnzbd_exporter:latest
+    restart: on-failure
+    environment:
+      - SABNZBD_BASEURL=http://gnas:8088/sabnzbd
+      - SABNZBD_APIKEY=<apikey>
+    ports:
+      - 9387:9387/tcp
+
+  transmission_exporter:
+    container_name: transmission_exporter
+    image: metalmatze/transmission-exporter:latest
+    restart: on-failure
+    environment:
+      - WEB_ADDR=:19091
+      - TRANSMISSION_ADDR=http://gnas:9099

@@ -1,0 +1,13 @@
+[Unit]
+Description=InSync Service
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/home/insync
+ExecStart=/bin/su insync -c /usr/bin/insync-headless start
+ExecStop=/bin/su insync -c /usr/bin/insync-headless quit
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

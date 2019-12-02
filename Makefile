@@ -1,5 +1,6 @@
 .PHONY: help
 .DEFAULT_GOAL := help
+VERSION=`cat VERSION`
 
 # Self-documenting Makefile based on code written by [François Zaninotto](http://bit.ly/2PYuVj1)
 
@@ -20,23 +21,16 @@ get-deps: ## Retrieve dependencies locally
 	@docker -l fatal pull sdesbure/yamllint:latest
 	@docker -l fatal pull sahsu/docker-jsonlint:latest
 
-build-image: test-dockerfile ## Build an image from the Dockerfile
+build-image: clean test-template test-dockerfile get-deps ## Build an image from the Dockerfile
 	@echo "Build an image from the Dockerfile"
-	@docker -l fatal build . -t gnas-portainer-templates
+	@docker -l fatal build . -t gtrummell/gnas-portainer-templates:$(VERSION)
 
-test-template: clean get-deps ## Test the Portainer Templates JSON file for lint
+test-dockerfile: ## Test the Dockerfile for lint
+	@echo "Lint-test the Dockerfile"
+	@docker -l fatal run -i --rm hadolint/hadolint:latest < Dockerfile
+
+test-template: ## Test the Portainer Templates JSON file for lint
 	@echo "Lint-test the Portainer Templates JSON file"
 	@docker -l fatal run -v ${PWD}:/jsonlint --rm sahsu/docker-jsonlint jsonlint -q /jsonlint/templates.json
 
-test-dockerfile: clean get-deps ## Test the Dockerfile for lint
-	@echo "Test the Dockerfile for lint and syntax"
-	@docker -l fatal run -i --rm hadolint/hadolint:latest < Dockerfile
-
-test-docker-compose: clean get-deps ## Test Docker-compose files for lint and syntax
-	@echo "Test Docker-compose files for lint and syntax"
-	@docker -l fatal run -v ${PWD}:/yaml --rm sdesbure/yamllint:latest yamllint -d relaxed /yaml
-	@for docker_compose_file in $(find stacks/ -type f -name docker-compose.yml); do \
-		docker-compose -f $$docker_compose_file ; \
-	done
-
-ci: test-template test-dockerfile test-docker-compose ## Run all tests
+ci: test-template test-dockerfile ## Run all tests
