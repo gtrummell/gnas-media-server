@@ -80,7 +80,6 @@ scrape_configs:
         'gnas:3000'
       ]
 
-
   - job_name: 'smokeping'
 
     # metrics_path defaults to '/metrics'

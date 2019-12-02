@@ -90,3 +90,14 @@ scrape_configs:
       - targets: [
         'gnas:9374'
       ]
+
+  - job_name: 'media'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: [
+        'gnas:9387',
+        'gnas:19091'
+      ]
