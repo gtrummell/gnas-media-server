@@ -1,19 +1,19 @@
 # GNAS-Linuxserver.io Media Server Templates for Portainer
 
-[![Build Status](https://travis-ci.org/gtrummell/gnas-portainer-templates.svg?branch=master)](https://travis-ci.org/gtrummell/gnas-portainer-templates)
+[![Build Status](https://travis-ci.org/gtrummell/gnas-media-server.svg?branch=master)](https://travis-ci.org/gtrummell/gnas-media-server)
 
 This repository hosts Portainer Application Templates for
 [Linuxserver.io](https://linuxserver.io) and several other HTPC Application Maintainers,
 intended for educational and hobbyist activities.  See the [GNAS Linuxserver.io Media
-Server Portainer Templates Wiki](https://github.com/gtrummell/gnas-portainer-templates/wiki)
+Server Portainer Templates Wiki](https://github.com/gtrummell/gnas-media-server/wiki)
 for more information.
 
 ## Quickstart
 Launch Portainer and the GNAS app templates locally on your linux media server:
 
 ```bash
-git clone https://github.com/gtrummell/gnas-portainer-templates.git
-cd gnas-portainer-templates/stacks/gnas-bare-lsio-local
+git clone https://github.com/gtrummell/gnas-media-server.git
+cd gnas-media-server/stacks/gnas-bare-lsio-local
 docker-compose up -d
 ```
 

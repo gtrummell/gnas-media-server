@@ -30,7 +30,7 @@ docker-compose up -d
 If you prefer not to run your own web service to host template files, another
 option is to retrieve the raw file from GitHub.  This example pulls the
 GNAS-Linuxserver.io HTPC Portainer Templates as
-[raw JSON from GitHub](https://github.com/gtrummell/gnas-portainer-templates/blob/master/templates.json).
+[raw JSON from GitHub](https://github.com/gtrummell/gnas-media-server/blob/master/templates.json).
 
 Run it:
 

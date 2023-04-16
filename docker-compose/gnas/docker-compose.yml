@@ -1,0 +1,332 @@
+version: '3.8'
+
+services:
+  bazarr:
+    container_name: bazarr
+    image: lscr.io/linuxserver/bazarr:latest
+    restart: on-failure
+    depends_on:
+      - traefik
+      - nordvpn
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.bazarr.rule=Host(`bazarr.gnas.local`)
+      - traefik.http.services.bazarr.loadbalancer.server.port=6767
+    volumes:
+      - /opt/gnas/bazarr:/config
+      - /storage:/data
+    network_mode: service:nordvpn
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    restart: on-failure
+    environment:
+      - PUID=65534
+      - PGID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.http.routers.grafana.rule=Host(`grafana.gnas.local`)
+      - traefik.http.services.grafana.loadbalancer.server.port=3000
+    volumes:
+      - /opt/gnas/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - /opt/gnas/grafana/lib:/var/lib/grafana
+      - /opt/gnas/grafana/log:/var/log/grafana
+    depends_on:
+      - traefik
+
+  lidarr:
+    container_name: lidarr
+    image: lscr.io/linuxserver/lidarr:latest
+    restart: on-failure
+    depends_on:
+      - traefik
+      - nordvpn
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.lidarr.rule=Host(`lidarr.gnas.local`)
+      - traefik.http.services.lidarr.loadbalancer.server.port=8686
+    volumes:
+      - /opt/gnas/lidarr:/config
+      - /storage:/data
+    network_mode: service:nordvpn
+
+  jellyfin:
+    container_name: jellyfin
+    image: jellyfin/jellyfin:latest
+    restart: unless-stopped
+    user: 65534:65534
+    environment:
+      - JELLYFIN_PublishedServerUrl='jellyfin.gnas.local'
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.jellyfin.rule=Host(`jellyfin.gnas.local`)
+      - traefik.http.services.jellyfin.loadbalancer.server.port=8096
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+    volumes:
+      - /opt/gnas/jellyfin/config:/config
+      - /opt/gnas/jellyfin/cache:/cache
+      - /storage:/data
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer:latest
+    restart: on-failure
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portainer.rule=Host(`portainer.gnas.local`)
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
+    volumes:
+      - /etc/portainer:/etc/portainer
+      - /var/lib/portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    command:
+      - "--templates='https://raw.githubusercontent.com/gtrummell/gnas-media-server/master/templates.json'"
+    depends_on:
+      - traefik
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.prowlarr.rule=Host(`prowlarr.gnas.local`)
+      - traefik.http.services.prowlarr.loadbalancer.server.port=9696
+    volumes:
+      - /opt/gnas/prowlarr:/config
+    restart: on-failure
+    depends_on:
+      - traefik
+      - nordvpn
+    network_mode: service:nordvpn
+
+  radarr:
+    container_name: radarr
+    image: lscr.io/linuxserver/radarr:latest
+    restart: on-failure
+    depends_on:
+      - traefik
+      - nordvpn
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.radarr.rule=Host(`radarr.gnas.local`)
+      - traefik.http.services.radarr.loadbalancer.server.port=7878
+    volumes:
+      - /opt/gnas/radarr:/config
+      - /storage:/data
+    network_mode: service:nordvpn
+
+  sabnzbd:
+    container_name: sabnzbd
+    image: lscr.io/linuxserver/sabnzbd:latest
+    restart: on-failure
+    depends_on:
+      - traefik
+      - nordvpn
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.gnas.local`)
+      - traefik.http.services.sabnzbd.loadbalancer.server.port=8080
+    volumes:
+      - /opt/gnas/sabnzbd:/config
+      - /storage:/data
+    network_mode: service:nordvpn
+
+  sonarr:
+    container_name: sonarr
+    image: lscr.io/linuxserver/sonarr:latest
+    restart: on-failure
+    depends_on:
+      - traefik
+      - nordvpn
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sonarr.rule=Host(`sonarr.gnas.local`)
+      - traefik.http.services.sonarr.loadbalancer.server.port=8989
+    volumes:
+      - /opt/gnas/sonarr:/config
+      - /storage:/data
+    network_mode: service:nordvpn
+
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    restart: unless-stopped
+    container_name: transmission
+    environment:
+      - PGID=65534
+      - PUID=65534
+      - TZ=America/Los_Angeles
+    volumes:
+      - /opt/gnas/transmission:/config
+      - /storage:/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.transmission.rule=Host(`transmission.gnas.local`)
+      - traefik.http.services.transmission.loadbalancer.server.port=9091
+    depends_on:
+      - traefik
+      - nordvpn
+    network_mode: service:nordvpn
+
+  tdarr-server:
+    container_name: tdarr-server
+    image: ghcr.io/haveagitgat/tdarr:latest
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+      - 8267:8267 # internal node port
+      #- 8268:8268 # Example extra node port
+    environment:
+      - TZ='America/Los Angeles'
+      - PUID=65534
+      - PGID=65534
+      - UMASK_SET=002
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=false
+      - nodeName=gnas-tdarr-server
+    volumes:
+      - /opt/gnas/tdarr/server:/app/server
+      - /opt/gnas/tdarr/configs:/app/configs
+      - /opt/gnas/tdarr/logs:/app/logs
+      - /storage:/data
+      - /storage/Transcode:/temp
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.tdarr-server.rule=Host(`tdarr-server.gnas.local`)
+      - traefik.http.services.tdarr-server.loadbalancer.server.port=8265
+    depends_on:
+      - traefik
+
+  tdarr-node:
+    container_name: tdarr-node
+    image: ghcr.io/haveagitgat/tdarr_node:latest
+    restart: unless-stopped
+    privileged: true
+    network_mode: service:tdarr-server
+    environment:
+      - TZ='America/Los Angeles'
+      - PUID=65534
+      - PGID=65534
+      - UMASK_SET=002
+      - nodeName=gnas-tdarr-node
+      - serverIP=0.0.0.0
+      - serverPort=8266
+    volumes:
+      - /opt/gnas/tdarr/configs:/app/configs
+      - /opt/gnas/tdarr/logs:/app/logs
+      - /storage:/data
+      - /storage/Transcode:/temp
+    labels:
+      - traefik.enable=false
+
+  shinobi:
+    container_name: shinobi
+    image: registry.gitlab.com/shinobi-systems/shinobi:dev
+    restart: unless-stopped
+    ports:
+      - 8081:8080/tcp
+    volumes:
+      - /dev/shm/shinobi/streams:/dev/shm/streams:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/gnas/shinobi/config:/config:rw
+      - /opt/gnas/shinobi/customAutoLoad:/home/Shinobi/libs/customAutoLoad:rw
+      - /opt/gnas/shinobi/database:/var/lib/mysql:rw
+      - /opt/gnas/shinobi/plugins:/home/Shinobi/plugins:rw
+      - /storage/DVR/CCTV:/home/Shinobi/videos:rw
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.shinobi.rule=Host(`shinobi.gnas.local`)
+      - traefik.http.services.shinobi.loadbalancer.server.port=8080
+
+  unifi:
+    image: lscr.io/linuxserver/unifi-controller:latest
+    container_name: unifi
+    environment:
+      - PUID=65534
+      - PGID=65534
+      - TZ='America/Los Angeles'
+    volumes:
+      - /opt/gnas/unifi-docker:/config
+    labels:
+      - traefik.enable=false
+    ports:
+      - 1900:1900/udp
+      - 3478:3478/udp
+      - 5514:5514/udp
+      - 6789:6789
+      - 8080:8080
+      - 8443:8443
+      - 10001:10001/udp
+    restart: unless-stopped
+
+  traefik:
+    container_name: traefik
+    image: traefik:latest
+    restart: on-failure
+    labels:
+      - traefik.enable=false
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+      - 8181:8181/tcp
+      - 9351:9351/tcp
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/gnas/traefik:/etc/traefik
+
+  nordvpn:
+    container_name: nordvpn
+    image: azinchen/nordvpn:latest
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun
+    labels:
+      - traefik.enable=false
+    environment:
+      - USER=B28sbBvvTY3n8ZyDuRdvzcnN
+      - PASS=d9WqyEQ8SLrFkL71z87yU1Cd
+      - COUNTRY=United_States
+      - GROUP=Standard VPN servers
+      - NETWORK=192.168.151.0/24
+      - OPENVPN_OPTS=--mute-replay-warnings
+      - RANDOM_TOP=10
+      - RECREATE_VPN_CRON=5 */3 * * *

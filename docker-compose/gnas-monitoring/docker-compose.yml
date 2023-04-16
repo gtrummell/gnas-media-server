@@ -1,0 +1,115 @@
+version: '3.8'
+
+services:
+  alertmanager:
+    container_name: alertmanager
+    image: prom/alertmanager:latest
+    restart: on-failure
+    labels:
+      - traefik.enable=false
+    ports:
+      - 9093:9093
+    volumes:
+      - /opt/gnas/prom/alertmanager.yml:/etc/prometheus/alertmanager.yml
+      - /opt/gnas/prom/alertmanager:/alertmanager
+
+  blackbox_exporter:
+    container_name: blackbox_exporter
+    image: prom/blackbox-exporter:latest
+    dns:
+      - 192.168.151.1
+    restart: on-failure
+    labels:
+      - traefik.enable=false
+    ports:
+      - 9115:9115
+    volumes:
+      - /opt/gnas/prom/blackbox_exporter.yml:/etc/blackbox_exporter/config.yml
+
+  cadvisor:
+    container_name: cadvisor
+    image: gcr.io/cadvisor/cadvisor
+    restart: on-failure
+    environment:
+      - PUID=65534
+      - PGID=65534
+      - TZ='America/Los Angeles'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.cadvisor.rule=Host(`cadvisor.gnas.local`)
+    ports:
+      - 9080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+
+  prom:
+    container_name: prom
+    command: --storage.tsdb.retention.size=15GB
+    dns:
+      - 192.168.151.1
+    dns_search: gnas.local.
+    image: prom/prometheus:latest
+    restart: on-failure
+    environment:
+      - PUID=65534
+      - PGID=65534
+      - TZ='America/Los Angeles'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.prom.rule=Host(`prom.gnas.local`)
+    ports:
+      - 9090:9090
+    volumes:
+      - /opt/gnas/prom/prometheus.yml:/prometheus/prometheus.yml
+      - /opt/gnas/prom/rules:/etc/prometheus/rules
+      - /opt/gnas/prom/prometheus:/prometheus/data
+
+  pushgateway:
+    container_name: pushgateway
+    image: prom/pushgateway:latest
+    restart: on-failure
+    labels:
+      - traefik.enable=false
+    ports:
+      - 9091:9091
+    volumes:
+      - /opt/gnas/prom/pushgateway:/pushgateway
+
+  sabnzbd_exporter:
+    container_name: sabnzbd_exporter
+    image: msroest/sabnzbd_exporter:latest
+    restart: on-failure
+    environment:
+      - SABNZBD_BASEURL=http://sabnzbd.gnas.local
+      - SABNZBD_APIKEY="YOUR KEY HERE"
+    labels:
+      - traefik.enable=false
+    ports:
+      - 9387:9387/tcp
+
+  smokeping_exporter:
+    container_name: smokeping_exporter
+    image: superque/smokeping-prober
+    restart: on-failure
+    command: "--ping.interval=10s google.com www.microsoft.com aws.amazon.com apple.com facebook.com rackspace.com robertsspaceindustries.com"
+    dns:
+      - 192.168.151.1
+    labels:
+      - traefik.enable=false
+    ports:
+      - 9374:9374/tcp
+
+  transmission_exporter:
+    container_name: transmission_exporter
+    image: metalmatze/transmission-exporter:latest
+    restart: on-failure
+    environment:
+      - TRANSMISSION_ADDR=http://transmission.gnas.local
+    labels:
+      - traefik.enable=false
+    ports:
+      - 19091:19091/tcp

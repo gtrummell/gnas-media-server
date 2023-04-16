@@ -3,7 +3,7 @@
 * [Docker](http://docker.io).
 * [Docker-compose](http://docs.docker.com/compose/install/).
 * [This repository: GNAS Linuxserver.io Media Server Portainer
-  Templates](https://github.com/gtrummell/gnas-portainer-templates).
+  Templates](https://github.com/gtrummell/gnas-media-server).
 
 
 # How do I get my media files into my GNAS?
