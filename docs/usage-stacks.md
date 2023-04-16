@@ -87,6 +87,6 @@ Using Web Editor and Upload from your computer are straightforward.  Copy and pa
 or choose a Portainer Stack on disk.
 
 Using Git Repository with GNAS EMR would be configured as follows:
-* _Repository URL:_ `https://github.com/gtrummell/gnas-portainer-templates`
+* _Repository URL:_ `https://github.com/gtrummell/gnas-media-server`
 * _Repository Reference:_ `/refs/heads/master`
 * _Compose Path:_ `stacks/gnas-emr-lsio-remote/docker-compose.yml`

@@ -10,9 +10,9 @@ help:
 
 clean: ## Sanitize the workspace by removing containers"
 	@echo "Sanitize the workspace by removing containers"
-	-docker -l fatal stop gnas-portainer-tempates
+	-docker -l fatal stop gnas-media-server
 	-docker -l fatal rm -f gnas-portainer-tempates
-	-docker -l fatal rmi -f gnas-portainer-templates
+	-docker -l fatal rmi -f gnas-media-server
 
 get-deps: ## Retrieve dependencies locally
 	@echo "Retrieve dependencies locally"
@@ -23,7 +23,7 @@ get-deps: ## Retrieve dependencies locally
 
 build-image: clean test-template test-dockerfile get-deps ## Build an image from the Dockerfile
 	@echo "Build an image from the Dockerfile"
-	@docker -l fatal build . -t gtrummell/gnas-portainer-templates:$(VERSION)
+	@docker -l fatal build . -t gtrummell/gnas-media-server:$(VERSION)
 
 test-dockerfile: ## Test the Dockerfile for lint
 	@echo "Lint-test the Dockerfile"
